@@ -1,0 +1,139 @@
+// .logo {
+//   position: relative;
+//   display: block;
+//   border-radius: 5px;
+//   z-index: 0;
+//   transition: box-shadow 0.5s, opacity 0.5s ease-in-out;
+
+//   &:hover {
+//     opacity: 0.8;
+//   }
+
+//   &:focus {
+//     box-shadow: 0 0 0 2px $accent;
+//   }
+
+//   &:active {
+//     opacity: 0.5;
+//   }
+
+//   &__img {
+//         object-fit: cover;
+//   }
+// }
+
+// .link {
+//   display: block;
+//   font-size: 18px;
+//   line-height: 1.3;
+//   letter-spacing: 0.18px;
+//   border-radius: 5px;
+//   transition: color 0.5s, box-shadow 0.5s, text-shadow 0.5s ease-in-out;
+
+//   @include mq("tablet-2", max) {
+//     padding: 10px 0;
+//     line-height: 1.28;
+//     letter-spacing: 0.18px;
+//   }
+
+//   &:hover {
+//     color: $accent;
+//   }
+
+//   &:focus {
+//     box-shadow: 0 0 0 2px $accent-05alpha;
+//   }
+
+//   &:active {
+//     text-shadow: 2px 2px 5px $default-05alpha;
+//   }
+
+//   &--header {
+//     color: $white;
+//   }
+
+//   &.current {
+//     color: $accent;
+//   }
+// }
+
+.btn {
+  font-size: 14px;
+  line-height: 1.3;
+  letter-spacing: 0;
+  color: $bg-default;
+  display: inline-block;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: $accent;
+  border: 1px solid $bg-default;
+  transition: box-shadow 0.5s, background-color 0.5s ease-in-out;
+
+  &:hover {
+    color: $accent;
+    background-color: $accent-05alpha;
+  }
+
+  &:focus {
+    background-color: $accent-05alpha;
+    box-shadow: 0 0 0 2px $accent;
+  }
+
+  &:active {
+    background-color: $accent-05alpha;
+  }
+
+
+
+
+  
+  &--big {
+    font-size: 18px;
+    letter-spacing: 0.54px;
+    padding: 12px 32px;
+
+    @include mq("tablet-2", max) {
+      font-size: 14px;
+      letter-spacing: 0.42px;
+      padding: 8px 24px;
+    }
+  }
+
+  &--sub {
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    color: $bg-default;
+    align-items: center;
+    padding: 13px 37px;
+  }
+}
+
+// .more {
+//   display: block;
+//   color: $title;
+//   border-radius: 5px;
+//   text-decoration: 0.5px underline $title;
+//   transition: color 0.5s,
+//   box-shadow 0.5s,
+//   background-color 0.5s ease-in-out;
+
+//   &:hover {
+//     color: $accent;
+//   }
+
+//   &:focus {
+//     box-shadow: 0 0 0 1px $accent;
+//   }
+
+//   &:active {
+//     color: $white;
+//     background-color: $accent;
+//   }
+
+//   @include mq("tablet-2", max) {
+//     font-size: 16px;
+//   }
+// }
+
+

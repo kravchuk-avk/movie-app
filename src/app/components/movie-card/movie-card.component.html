@@ -1,0 +1,36 @@
+<article class="movie-card" id="{{ movie.id }}" [ngStyle]="{'background-image': 'url(' + movie.image + ')'}">
+  <div class="movie-card__inner">
+    <h3 class="movie-card__title">{{ movie.title }} ({{ movie.release }})
+      <p class="movie-card__duration">{{ movie.duration | duration }}
+        <span class="sr-only"> Тривалість </span>
+      </p>
+    </h3>
+    <p class="movie-card__overview">{{ movie.overview }}</p>
+    <div class="movie-card__box">
+      <button 
+      class="movie-card__btn" 
+      type="button"
+      [ngClass]="{'favorite': isFavorite}" 
+      (click)="addToFavorites()"
+      >
+        <svg class="movie-card__icon" width="35" height="35">
+          <use href="/assets/icons/heart.svg#heart"></use>
+        </svg>
+        <span class="sr-only"> Додати до улюблених </span>
+      </button>
+      <div class="movie-card__btn">
+        <svg class="movie-card__icon" width="50" height="50">
+          <use href="/assets/icons/star.svg#star"></use>
+        </svg>
+        <span class="sr-only"> Рейтинг </span>
+        <span class="movie-card__rating"> {{ movie.rating }} </span>
+      </div>
+      <button class="movie-card__btn" type="button" [ngClass]="{'watchlist': isInWatchList}" (click)="addToWatchList()">
+        <svg class="movie-card__icon" width="35" height="35">
+          <use href="/assets/icons/clock.svg#clock"></use>
+        </svg>
+        <span class="sr-only"> Додати до списку перегляду </span>
+      </button>
+    </div>
+  </div>
+</article>
