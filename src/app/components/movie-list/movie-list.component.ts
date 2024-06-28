@@ -44,3 +44,4 @@ export class MovieListComponent {
     return movie.id;
   }
 }
+

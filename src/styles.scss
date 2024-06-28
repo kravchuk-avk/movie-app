@@ -5,3 +5,20 @@
 @import 'app/scss/config/_ints';
 
 
+
+.p-card {
+  height: 100%;
+  background: transparent;
+  color: #fff;
+}
+
+.p-card-subtitle {
+  color: #fff;
+}
+
+.p-card-body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

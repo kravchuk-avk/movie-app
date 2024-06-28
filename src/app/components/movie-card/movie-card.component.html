@@ -1,4 +1,4 @@
-<article class="movie-card" id="{{ movie.id }}" [ngStyle]="{'background-image': 'url(' + movie.image + ')'}">
+<!-- <article class="movie-card" id="{{ movie.id }}" [ngStyle]="{'background-image': 'url(' + movie.image + ')'}">
   <div class="movie-card__inner">
     <h3 class="movie-card__title">{{ movie.title }} ({{ movie.release }})
       <p class="movie-card__duration">{{ movie.duration | duration }}
@@ -33,4 +33,40 @@
       </button>
     </div>
   </div>
-</article>
+</article> -->
+
+<p-card header="{{ movie.title }}" subheader="{{ movie.release }}   |   {{ movie.duration | duration }}" class="movie-card" id="{{ movie.id }}" [ngStyle]="{'background-image': 'url(' + movie.image + ')'}">
+  <!-- <ng-template pTemplate="header">
+    <img alt="{{ movie.title }}" src="{{ movie.image }}" style="width: 100%;">
+  </ng-template> -->
+<div class="movie-card__inner">
+  <p class="movie-card__overview">{{ movie.overview }}</p>
+  <p></p>
+
+
+<div class="movie-card__box">
+
+      <p-button 
+      class="movie-card__btn"
+      type="button"
+      [ngClass]="{'favorite': isFavorite}" 
+      (click)="addToFavorites()"
+      icon="pi pi-heart"
+      styleClass="movie-card__icon"
+      >
+      </p-button>
+
+      <div class="movie-card__btn">
+        <svg class="movie-card__icon" width="50" height="50">
+          <use href="/assets/icons/star.svg#star"></use>
+        </svg>
+        <span class="sr-only"> Рейтинг </span>
+        <span class="movie-card__rating"> {{ movie.rating }} </span>
+      </div>
+
+      <p-button class="movie-card__btn" type="button" [ngClass]="{'watchlist': isInWatchList}" (click)="addToWatchList()" icon="pi pi-clock" [style]="{'color': isInWatchList ? 'rgb(104, 104, 255)' : '#fff'}">
+      </p-button>
+</div>
+</div>
+
+</p-card>
