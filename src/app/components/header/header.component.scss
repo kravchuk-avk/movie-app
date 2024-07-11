@@ -1,3 +1,61 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+
+  .header__list {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+
+    .header__item {
+      margin-right: 15px;
+
+      .header__link {
+        color: #fff;
+        text-decoration: none;
+
+        &.header__link_active {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .movie-card__btn {
+    margin-left: 10px;
+  }
+
+  .movie-card__icon {
+    color: #fff;
+
+  }
+
+
+
+    &__nav {
+text-align: center;
+    }
+
+
+&__inner {
+        display: inline-flex;
+        justify-content: space-evenly;
+        gap: 40px;
+  border-radius: 40px;
+          border: 1px solid #ebebeb;
+          padding: 5px 20px;
+
+}
+
+
+
+}
+
 @import '../../../app/scss/config/_vars';
 
 .movie-card {
@@ -39,7 +97,7 @@
     font-size: 12px;
     color: #fff;
   }
-  
+
   &__box {
     display: flex;
     align-items: center;
@@ -59,17 +117,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 44px;
-    height: 44px;
+
     border-radius: 5px;
-    // color: black;
-    color: #fff;
+    color: black;
+    // color: #fff;
     position: relative;
     transition: background-color 0.5s, box-shadow 0.5s, text-shadow 0.5s ease-in-out;
 
     &:hover {
-      background-color: #fff;
-      color: black;
+      // background-color: black;
+      color: rgb(22, 165, 0);
     }
 
     &:focus {
@@ -78,16 +135,16 @@
     }
 
     &:active {
-      background-color: gray;
+      background-color: rgb(181, 181, 181);
     }
 
-        &.favorite {
-          color: rgb(255, 117, 117);
-        }
+    &.favorite {
+      color: rgb(255, 117, 117);
+    }
 
-        &.watchlist {
-          color: rgb(104, 104, 255);
-        }
+    &.watchlist {
+      color: rgb(104, 104, 255);
+    }
 
 
 
@@ -97,24 +154,22 @@
 
 
 
-    & .favorite {
-      color: rgb(255, 117, 117);
-    }
+  & .favorite {
+    color: rgb(255, 117, 117);
+  }
 
-    & .watchlist {
-      color: rgb(104, 104, 255);
-    }
+  & .watchlist {
+    color: rgb(104, 104, 255);
+  }
 
   &__inner-icon {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 44px;
-    height: 44px;
-    border-radius: 5px;
-    // color: black;
-    color: #fff;
+
+    color: black;
+    // color: #fff;
     position: relative;
     transition: background-color 0.5s,
       box-shadow 0.5s,
@@ -124,21 +179,9 @@
   }
 
 
-      &__rating {
-        font-size: 12px;
-        line-height: 1.4;
-        // top: 7px;
-        position: absolute;
-        text-align: center;
-        // left: calc(50% + 5px);
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        // background-color: #fff;
-        color: #fff;
-        display: inline-table;
-      }
+
 }
-::ng-deep .movie-card__icon .pi
- {
-  font-size: 28px;}
+
+::ng-deep .movie-card__icon .pi {
+  font-size: 28px;
+}

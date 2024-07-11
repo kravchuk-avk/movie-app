@@ -1,0 +1,19 @@
+<!-- <p>movie-watch-list-page works!</p> -->
+
+<section class="movie-list container section">
+  <ng-container *ngIf="watchLaterMovieListIds.length > 0">
+    <h2 class="title">Subsequently:</h2>
+  </ng-container>
+  <div class="movie-cards grid">
+    <ng-container *ngFor="let movieId of watchLaterMovieListIds; trackBy: trackByMovieId">
+      <app-movie-card 
+        *ngIf="getMovieById(movieId)"
+        [movie]="getMovieById(movieId)"
+        [isFavorite]="isInList(favoriteMovieListIds, movieId)"
+        [isInWatchList]="true"
+        (addFavorites)="handleAddToFavorite(movieId)"
+        (addWatchList)="handleAddToWatchList(movieId)"
+      ></app-movie-card>
+    </ng-container>
+  </div>
+</section>

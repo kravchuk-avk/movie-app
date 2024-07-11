@@ -1,0 +1,42 @@
+
+  <nav class="header__nav container section">
+
+
+<div class="header__inner">
+
+      <p-button 
+      class="movie-card__btn"
+      type="button"
+      (click)="navigateWithData(favoriteMovieIds, 'favorite')"
+      icon="pi pi-heart"
+      styleClass="movie-card__icon"
+      label="Favorites" />
+
+
+
+      <p-button 
+      class="movie-card__btn" 
+      type="button" 
+      (click)="navigateWithData(watchLaterMovieIds)"
+      icon="pi pi-clock" 
+      styleClass="movie-card__icon"
+      label="WatchList" />
+
+
+</div>
+    <!-- <button class="link" (click)="navigateWithData(favoriteMovieIds, 'favorite')"> Favorites </button>
+    <button class="link" (click)="navigateWithData(watchLaterMovieIds)"> WatchList </button> -->
+  </nav>
+
+
+<!-- <header class="header">
+  <ul class="header__list">
+    <li *ngFor="let item of headerLinks" class="header__item">
+      <a [routerLink]="item.routePath"
+        routerLinkActive="header__link_active"
+        class="header__link">
+        <span>{{ item.routeName }}</span>
+      </a>
+    </li>
+  </ul>
+</header> -->

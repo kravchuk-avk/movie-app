@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MovieCardComponent } from '../movie-card/movie-card.component';
-import { DurationPipe } from '../../pipe/duration/duration.pipe'
-import { MOCK_MOVIES } from '../../mock-data/mock-movies';
+import { DurationPipe } from '../../pipes/duration/duration.pipe'
+import { nowPlayingMovies } from '../../mocks/mock-movies';
 
 @Component({
   selector: 'app-movie-list',
@@ -13,7 +13,7 @@ import { MOCK_MOVIES } from '../../mock-data/mock-movies';
 })
 export class MovieListComponent {
 
-  movies = MOCK_MOVIES;
+  movies = nowPlayingMovies;
 
 
   favorites: any[] = [];
@@ -43,5 +43,6 @@ export class MovieListComponent {
   trackByMovieId(index: number, movie: any): number {
     return movie.id;
   }
+  
 }
 

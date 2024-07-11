@@ -1,4 +1,4 @@
-export const MOCK_MOVIES = [
+export const nowPlayingMovies = [
   {
     image: "https://is1-ssl.mzstatic.com/image/thumb/PMcGyfR9w1JdYpgfuH_Waw/1679x945sr.webp",
     id: 653346,

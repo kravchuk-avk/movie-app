@@ -3,5 +3,15 @@
   
 </app-movie-card> -->
 
-<app-movie-list></app-movie-list>
 
+<!-- <app-movie-list></app-movie-list> -->
+
+
+  <app-sidebar></app-sidebar>
+  <main>
+    <router-outlet></router-outlet>
+    
+    <div>
+    <router-outlet name="header"></router-outlet>
+</div>
+  </main>

@@ -1,0 +1,23 @@
+  <app-header
+  [favoriteMovieIds]="favoriteMovieListIds"
+  [watchLaterMovieIds]="watchLaterMovieListIds"
+  ></app-header>
+
+<section class="movie-list container section">
+    <h2 class="title">TOp Rate</h2>
+    <div class="movie-cards grid">
+      <ng-container *ngIf="movies.length > 0; else noMovies">
+        <app-movie-card
+          *ngFor="let item of movies; trackBy: trackByMovieId"
+          [movie]="item"
+          [isFavorite]="isInList(favoriteMovieListIds, item)"
+          [isInWatchList]="isInList(watchLaterMovieListIds, item)"
+          (addFavorites)="handleAddToFavorite(item)"
+          (addWatchList)="handleAddToWatchList(item)"
+        ></app-movie-card>
+      </ng-container>
+      <ng-template #noMovies>
+        <p>No movies available</p>
+      </ng-template>
+    </div>
+  </section>

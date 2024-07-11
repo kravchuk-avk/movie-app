@@ -35,11 +35,13 @@
   </div>
 </article> -->
 
-<p-card header="{{ movie.title }}" subheader="{{ movie.release }}   |   {{ movie.duration | duration }}" class="movie-card" id="{{ movie.id }}" [ngStyle]="{'background-image': 'url(' + movie.image + ')'}">
-  <!-- <ng-template pTemplate="header">
-    <img alt="{{ movie.title }}" src="{{ movie.image }}" style="width: 100%;">
-  </ng-template> -->
-<div class="movie-card__inner">
+<p-card 
+header="{{ movie.original_title }}" 
+subheader="{{ movie.release_date }}   |   {{ movie.duration | duration }}" 
+class="movie-card" 
+id="{{ movie.id }}"
+[ngStyle]="{'background-image': 'url( https://image.tmdb.org/t/p/w500/' + (movie?.poster_path) + ')'}">
+<div class="movie-card__wrapper">
   <p class="movie-card__overview">{{ movie.overview }}</p>
   <p></p>
 
@@ -56,15 +58,25 @@
       >
       </p-button>
 
-      <div class="movie-card__btn">
-        <svg class="movie-card__icon" width="50" height="50">
+      <div class="movie-card__inner-icon">
+        <svg class="movie-card__icon" width="44" height="44">
           <use href="/assets/icons/star.svg#star"></use>
         </svg>
         <span class="sr-only"> Рейтинг </span>
-        <span class="movie-card__rating"> {{ movie.rating }} </span>
+        <span class="movie-card__rating"> {{ movie.vote_average | number:'1.0-0'}} </span>
       </div>
 
-      <p-button class="movie-card__btn" type="button" [ngClass]="{'watchlist': isInWatchList}" (click)="addToWatchList()" icon="pi pi-clock" [style]="{'color': isInWatchList ? 'rgb(104, 104, 255)' : '#fff'}">
+      <p-button class="movie-card__btn" type="button"  [routerLink]="['/movie', movie.id]" icon="pi pi-info-circle" styleClass="movie-card__icon">
+      </p-button>
+
+      <p-button 
+      class="movie-card__btn" 
+      type="button" 
+      [ngClass]="{'watchlist': isInWatchList}" 
+      (click)="addToWatchList()" 
+      icon="pi pi-clock" 
+      styleClass="movie-card__icon"
+      >
       </p-button>
 </div>
 </div>
