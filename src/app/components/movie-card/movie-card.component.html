@@ -1,84 +1,54 @@
-<!-- <article class="movie-card" id="{{ movie.id }}" [ngStyle]="{'background-image': 'url(' + movie.image + ')'}">
-  <div class="movie-card__inner">
-    <h3 class="movie-card__title">{{ movie.title }} ({{ movie.release }})
-      <p class="movie-card__duration">{{ movie.duration | duration }}
-        <span class="sr-only"> Тривалість </span>
-      </p>
-    </h3>
+<p-card
+  header="{{ movie.original_title }}"
+  subheader="{{ movie.release_date }}   |   {{
+    movie.duration ?? 0 | duration
+  }}"
+  class="movie-card"
+  id="{{ movie.id }}"
+  [ngStyle]="{
+    'background-image':
+      'url( https://image.tmdb.org/t/p/w500/' + movie?.poster_path + ')',
+  }"
+>
+  <div class="movie-card__wrapper">
     <p class="movie-card__overview">{{ movie.overview }}</p>
+    <p></p>
     <div class="movie-card__box">
-      <button 
-      class="movie-card__btn" 
-      type="button"
-      [ngClass]="{'favorite': isFavorite}" 
-      (click)="addToFavorites()"
-      >
-        <svg class="movie-card__icon" width="35" height="35">
-          <use href="/assets/icons/heart.svg#heart"></use>
-        </svg>
-        <span class="sr-only"> Додати до улюблених </span>
-      </button>
-      <div class="movie-card__btn">
-        <svg class="movie-card__icon" width="50" height="50">
-          <use href="/assets/icons/star.svg#star"></use>
-        </svg>
-        <span class="sr-only"> Рейтинг </span>
-        <span class="movie-card__rating"> {{ movie.rating }} </span>
-      </div>
-      <button class="movie-card__btn" type="button" [ngClass]="{'watchlist': isInWatchList}" (click)="addToWatchList()">
-        <svg class="movie-card__icon" width="35" height="35">
-          <use href="/assets/icons/clock.svg#clock"></use>
-        </svg>
-        <span class="sr-only"> Додати до списку перегляду </span>
-      </button>
-    </div>
-  </div>
-</article> -->
-
-<p-card 
-header="{{ movie.original_title }}" 
-subheader="{{ movie.release_date }}   |   {{ movie.duration | duration }}" 
-class="movie-card" 
-id="{{ movie.id }}"
-[ngStyle]="{'background-image': 'url( https://image.tmdb.org/t/p/w500/' + (movie?.poster_path) + ')'}">
-<div class="movie-card__wrapper">
-  <p class="movie-card__overview">{{ movie.overview }}</p>
-  <p></p>
-
-
-<div class="movie-card__box">
-
-      <p-button 
-      class="movie-card__btn"
-      type="button"
-      [ngClass]="{'favorite': isFavorite}" 
-      (click)="addToFavorites()"
-      icon="pi pi-heart"
-      styleClass="movie-card__icon"
+      <p-button
+        class="movie-card__btn"
+        type="button"
+        [ngClass]="{ favorite: isFavorite }"
+        (click)="addToFavorites()"
+        icon="pi pi-heart"
+        styleClass="movie-card__icon"
       >
       </p-button>
-
       <div class="movie-card__inner-icon">
         <svg class="movie-card__icon" width="44" height="44">
           <use href="/assets/icons/star.svg#star"></use>
         </svg>
         <span class="sr-only"> Рейтинг </span>
-        <span class="movie-card__rating"> {{ movie.vote_average | number:'1.0-0'}} </span>
+        <span class="movie-card__rating">
+          {{ movie.vote_average | number: '1.0-0' }}
+        </span>
       </div>
-
-      <p-button class="movie-card__btn" type="button"  [routerLink]="['/movie', movie.id]" icon="pi pi-info-circle" styleClass="movie-card__icon">
-      </p-button>
-
-      <p-button 
-      class="movie-card__btn" 
-      type="button" 
-      [ngClass]="{'watchlist': isInWatchList}" 
-      (click)="addToWatchList()" 
-      icon="pi pi-clock" 
-      styleClass="movie-card__icon"
+      <p-button
+        class="movie-card__btn"
+        type="button"
+        [routerLink]="['/movie', movie.id]"
+        icon="pi pi-info-circle"
+        styleClass="movie-card__icon"
       >
       </p-button>
-</div>
-</div>
-
+      <p-button
+        class="movie-card__btn"
+        type="button"
+        [ngClass]="{ watchlist: isInWatchList }"
+        (click)="addToWatchList()"
+        icon="pi pi-clock"
+        styleClass="movie-card__icon"
+      >
+      </p-button>
+    </div>
+  </div>
 </p-card>

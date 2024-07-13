@@ -5,12 +5,12 @@
   grid-template-columns: repeat(auto-fill, 370px);
   gap: 30px;
 
-  @include mq("desktop", max) {
+  @include mq('desktop', max) {
     grid-template-columns: repeat(auto-fill, 345px);
     gap: 15px;
   }
 
-  @include mq("tablet", max) {
+  @include mq('tablet', max) {
     display: block;
     max-width: 345px;
     width: 100%;
@@ -18,15 +18,13 @@
   }
 
   &__item {
-
-    @include mq("tablet", max) {
+    @include mq('tablet', max) {
       margin-bottom: 30px;
     }
   }
 }
 
 .blog-card {
-
   &__double-arrow {
     stroke: currentColor;
     fill: none;
@@ -44,8 +42,11 @@
     text-align: left;
     border-radius: 20px;
     background-color: $bg-default;
-    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.10);
-    transition: box-shadow 0.5s, background-color 0.5s, transform 0.5s ease-in-out;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
+    transition:
+      box-shadow 0.5s,
+      background-color 0.5s,
+      transform 0.5s ease-in-out;
 
     &:hover {
       background-color: $accent;
@@ -100,7 +101,6 @@
     }
 
     & p {
-
       &:not(:last-child) {
         margin-bottom: 12px;
       }

@@ -12,7 +12,7 @@
     padding: 40px 0;
 
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       background-color: $bg-default-085alpha;
       height: 100%;
@@ -33,17 +33,17 @@
     @include line-clamp(11);
     position: relative;
 
-    @include mq("desktop", max) {
+    @include mq('desktop', max) {
       flex-direction: column;
       justify-content: center;
     }
 
-    @include mq("tablet", max) {
+    @include mq('tablet', max) {
       margin-bottom: 0 20px;
       padding: 0 60px;
     }
 
-    @include mq("phone", max) {
+    @include mq('phone', max) {
       padding: 0 45px;
     }
   }
@@ -53,7 +53,7 @@
     color: $title;
     padding: 30px 0 20px;
 
-    @include mq("tablet", max) {
+    @include mq('tablet', max) {
       font-size: 18px;
     }
   }
@@ -65,7 +65,6 @@
     text-indent: 20px;
 
     & p {
-      
       &:not(:last-child) {
         margin-bottom: 24px;
       }
@@ -87,7 +86,10 @@
     justify-content: center;
     align-items: center;
     background: $bg-default-05alpha;
-    transition: background-color 0.5s, border-color 0.5s, box-shadow 0.5 ease-in-out;
+    transition:
+      background-color 0.5s,
+      border-color 0.5s,
+      box-shadow 0.5 ease-in-out;
 
     &:hover {
       background-color: $bg-default;
@@ -111,7 +113,7 @@
     }
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       height: 44px;
       width: 44px;
@@ -156,7 +158,10 @@
       height: 15px;
       background-color: $ints;
       border-radius: 50%;
-      transition: background-color 0.2s, box-shadow 0.2s, ease-in-out;
+      transition:
+        background-color 0.2s,
+        box-shadow 0.2s,
+        ease-in-out;
 
       &:hover {
         background-color: $bg-default;
@@ -173,7 +178,7 @@
       }
 
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         height: 44px;
         width: 28px;

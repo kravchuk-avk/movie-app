@@ -8,10 +8,9 @@ describe('NowPlayingPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NowPlayingPageComponent]
-    })
-    .compileComponents();
-    
+      imports: [NowPlayingPageComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(NowPlayingPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -43,7 +43,9 @@
   padding: 5px;
   background-color: $accent;
   border: 1px solid $bg-default;
-  transition: box-shadow 0.5s, background-color 0.5s ease-in-out;
+  transition:
+    box-shadow 0.5s,
+    background-color 0.5s ease-in-out;
 
   &:hover {
     color: $accent;
@@ -59,16 +61,12 @@
     background-color: $accent-05alpha;
   }
 
-
-
-
-  
   &--big {
     font-size: 18px;
     letter-spacing: 0.54px;
     padding: 12px 32px;
 
-    @include mq("tablet-2", max) {
+    @include mq('tablet-2', max) {
       font-size: 14px;
       letter-spacing: 0.42px;
       padding: 8px 24px;
@@ -84,5 +82,3 @@
     padding: 13px 37px;
   }
 }
-
-

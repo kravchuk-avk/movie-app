@@ -1,36 +1,14 @@
-<!-- <p>movie-favorites-page works!</p>
-
-
-@if(favoriteMovieListIds.length > 0){
-<h2 class="title">Favorites:</h2>
-}
-<div class="">
-  <div class="movie-cards grid">
-  @for (movie of favoriteMovieListIds; track movie) {
-
-  <app-movie-card 
-    [movie]="movie"
-    [isFavorite]="true"
-    [isInWatchList]="isInList(watchLaterMovieListIds, movie)"
-    (addFavorites)="handleAddToFavorite(movie)"
-    (addWatchList)="handleAddToWatchList(movie)"
-  >
-  </app-movie-card>
-  }
-</div>
- -->
-
-<!-- <p>movie-favorites-page works!</p> -->
-
 <section class="movie-list container section">
-    <ng-container *ngIf="favoriteMovieListIds.length > 0">
-      <h2 class="title">Favorites:</h2>
-    </ng-container>
+  <ng-container *ngIf="favoriteMovieListIds.length > 0">
+    <h2 class="title">Favorites:</h2>
+  </ng-container>
   <div class="movie-cards grid">
-    <ng-container *ngFor="let movieId of favoriteMovieListIds; trackBy: trackByMovieId">
-      <app-movie-card 
+    <ng-container
+      *ngFor="let movieId of favoriteMovieListIds; trackBy: trackByMovieId"
+    >
+      <app-movie-card
         *ngIf="getMovieById(movieId)"
-        [movie]="getMovieById(movieId)"
+        [movie]="getMovieById(movieId)!"
         [isFavorite]="true"
         [isInWatchList]="isInList(watchLaterMovieListIds, movieId)"
         (addFavorites)="handleAddToFavorite(movieId)"
@@ -39,6 +17,3 @@
     </ng-container>
   </div>
 </section>
-
-
-

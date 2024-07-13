@@ -1,34 +1,46 @@
 import { CommonModule } from '@angular/common';
+import { Movie } from '../../models/movie.interface';
 import { Component, OnInit } from '@angular/core';
-import { DurationPipe } from '../../pipes/duration/duration.pipe'
-import { nowPlayingMovies, popularMovies, topRatedMovies, upcomingMovies } from '../../mocks/mock-movies+';
+import { DurationPipe } from '../../pipes/duration/duration.pipe';
+import {
+  nowPlayingMovies,
+  popularMovies,
+  topRatedMovies,
+  upcomingMovies,
+} from '../../mocks/mock-movies+';
 import { MovieCardComponent } from '../../components/movie-card/movie-card.component';
 import { HeaderComponent } from '../../components/header/header.component';
-import { MovieListComponent } from '../../components/movie-list/movie-list.component';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-movie-watch-list-page',
-   standalone: true,
-   imports: [HeaderComponent, MovieCardComponent, CommonModule, DurationPipe],
+  standalone: true,
+  imports: [HeaderComponent, MovieCardComponent, CommonModule, DurationPipe],
   templateUrl: './movie-watch-list-page.component.html',
-  styleUrl: './movie-watch-list-page.component.scss'
+  styleUrl: './movie-watch-list-page.component.scss',
 })
 export class MovieWatchListPageComponent implements OnInit {
-  movies = [...nowPlayingMovies, ...popularMovies, ...topRatedMovies, ...upcomingMovies];
+  movies: Movie[] = [
+    ...nowPlayingMovies,
+    ...popularMovies,
+    ...topRatedMovies,
+    ...upcomingMovies,
+  ];
   public favoriteMovieListIds: string[] = [];
   public watchLaterMovieListIds: string[] = [];
 
-  constructor(private route: ActivatedRoute) { }
-
-
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.route.queryParams.subscribe((params: { [x: string]: any }) => {
+    this.route.queryParams.subscribe((params: { [key: string]: string }) => {
       const favoriteDataString = params['favoriteData'];
-      this.favoriteMovieListIds = favoriteDataString ? JSON.parse(favoriteDataString) : [];
+      this.favoriteMovieListIds = favoriteDataString
+        ? JSON.parse(favoriteDataString)
+        : [];
       const watchLaterDataString = params['data'];
-      this.watchLaterMovieListIds = watchLaterDataString ? JSON.parse(watchLaterDataString) : [];
+      this.watchLaterMovieListIds = watchLaterDataString
+        ? JSON.parse(watchLaterDataString)
+        : [];
     });
   }
 
@@ -36,9 +48,9 @@ export class MovieWatchListPageComponent implements OnInit {
     return list.includes(itemId);
   }
 
-  getMovieById(id: string) {
+  getMovieById(id: string): Movie | undefined {
     const numericId = +id;
-    return this.movies.find(movie => movie.id === numericId);
+    return this.movies.find((movie) => movie.id === numericId);
   }
 
   handleAddToFavorite(movieId: string) {

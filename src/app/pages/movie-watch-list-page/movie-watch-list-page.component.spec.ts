@@ -8,10 +8,9 @@ describe('MovieWatchListPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MovieWatchListPageComponent]
-    })
-    .compileComponents();
-    
+      imports: [MovieWatchListPageComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(MovieWatchListPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

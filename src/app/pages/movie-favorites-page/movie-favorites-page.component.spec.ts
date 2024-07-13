@@ -8,10 +8,9 @@ describe('MovieFavoritesPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MovieFavoritesPageComponent]
-    })
-    .compileComponents();
-    
+      imports: [MovieFavoritesPageComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(MovieFavoritesPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

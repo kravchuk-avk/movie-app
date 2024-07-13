@@ -5,10 +5,10 @@
   stroke-dasharray: 4000;
   animation-name: monkey;
   animation-duration: 3s;
-  animation-iteration-count:infinite;
+  animation-iteration-count: infinite;
   animation-direction: alternate;
-  }
-  
+}
+
 @keyframes monkey {
   0% {
     stroke-dashoffset: -4000;
@@ -24,7 +24,7 @@
     stroke: $accent;
   }
   100% {
-  stroke-dashoffset:0;  
-  stroke: currentColor;
+    stroke-dashoffset: 0;
+    stroke: currentColor;
   }
 }

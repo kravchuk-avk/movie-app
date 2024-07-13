@@ -7,11 +7,11 @@
   &__checkbox {
     display: none;
 
-&:checked~.fab__label .phonefab {
-  display: none;
-}
+    &:checked ~ .fab__label .phonefab {
+      display: none;
+    }
 
-    &:checked~.fab__label:before {
+    &:checked ~ .fab__label:before {
       width: 90%;
       height: 90%;
       left: 5%;
@@ -19,30 +19,30 @@
       background-color: rgba(255, 255, 255, 0.2);
     }
 
-    &:checked~.fab__label .fab__dots {
+    &:checked ~ .fab__label .fab__dots {
       height: 6px;
       animation: none;
     }
 
-    &:checked~.fab__label .fab__dots--1 {
+    &:checked ~ .fab__label .fab__dots--1 {
       width: 32px;
       border-radius: 10px;
       left: 50%;
       transform: translateX(-50%) translateY(-50%) rotate(45deg);
     }
 
-    &:checked~.fab__label .fab__dots--3 {
+    &:checked ~ .fab__label .fab__dots--3 {
       width: 32px;
       border-radius: 10px;
       right: 50%;
       transform: translateX(50%) translateY(-50%) rotate(-45deg);
     }
 
-    &:checked~.fab__wheel {
+    &:checked ~ .fab__wheel {
       transform: scale(1);
     }
 
-    &:checked~.fab__wheel .fab__link {
+    &:checked ~ .fab__wheel .fab__link {
       opacity: 1;
     }
   }
@@ -64,7 +64,7 @@
     border: 1px solid $accent;
 
     &:before {
-      content: "";
+      content: '';
       position: absolute;
       width: 100%;
       height: 100%;

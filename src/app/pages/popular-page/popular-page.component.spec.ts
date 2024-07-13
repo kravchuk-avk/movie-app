@@ -8,10 +8,9 @@ describe('PopularPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PopularPageComponent]
-    })
-    .compileComponents();
-    
+      imports: [PopularPageComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(PopularPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -1,5 +1,4 @@
 .service {
-
   &__text-box {
     text-align: center;
   }
@@ -14,16 +13,16 @@
     font-weight: 400;
     color: $black;
 
-    @include mq("desktop", max) {
+    @include mq('desktop', max) {
       font-size: 24px;
     }
 
-    @include mq("tablet", max) {
+    @include mq('tablet', max) {
       font-size: 18px;
       padding: 35px 0;
     }
 
-    @include mq("phone", max) {
+    @include mq('phone', max) {
       font-size: 14px;
       padding: 35px 60px;
     }
@@ -35,16 +34,15 @@
     height: 100%;
     gap: 20px 50px;
 
-    
-    @include mq("desktop", max) {
+    @include mq('desktop', max) {
       margin-right: 0;
       gap: 20px 30px;
     }
 
-    @include mq("phone", max) {
+    @include mq('phone', max) {
       grid-template-columns: 1fr 1fr;
       gap: 20px;
-      
+
       & .link {
         font-size: 14px;
         border-top: 1px solid $accent;
@@ -69,7 +67,6 @@
     text-align: center;
     // @include line-clamp(2);
   }
-
 
   &__icon {
     display: inline-flex;

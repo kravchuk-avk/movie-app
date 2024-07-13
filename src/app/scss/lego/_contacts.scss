@@ -6,12 +6,12 @@
     flex-wrap: wrap;
     justify-content: space-between;
 
-    @include mq("desktop", max) {
+    @include mq('desktop', max) {
       gap: 20px;
       justify-content: space-around;
     }
 
-    @include mq("tablet-2", max) {
+    @include mq('tablet-2', max) {
       justify-content: center;
     }
   }
@@ -19,11 +19,11 @@
   &__address {
     padding: 60px 0;
 
-    @include mq("tablet", max) {
+    @include mq('tablet', max) {
       padding: 20px 0;
     }
 
-    @include mq("phone", max) {
+    @include mq('phone', max) {
       padding-top: 0;
     }
   }

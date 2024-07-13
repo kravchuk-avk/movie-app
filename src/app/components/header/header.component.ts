@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MenubarModule } from 'primeng/menubar';
-import { Router, RouterLink, RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { MovieCardComponent } from '../movie-card/movie-card.component';
 
@@ -10,20 +9,20 @@ import { MovieCardComponent } from '../movie-card/movie-card.component';
   standalone: true,
   imports: [RouterModule, CommonModule, ButtonModule, MovieCardComponent],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-@Input() favoriteMovieIds: string[] = [];
-@Input() watchLaterMovieIds: string[] = [];
+  @Input() favoriteMovieIds: string[] = [];
+  @Input() watchLaterMovieIds: string[] = [];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   navigateWithData(data: string[], favorite?: string) {
     const dataString = JSON.stringify(data);
-    const path = favorite ? 'favorite' : 'watch-list'
+    const path = favorite ? 'favorite' : 'watch-list';
 
-    this.router.navigate([{ outlets: { header: [path] } }], { queryParams: { data: dataString} } );
+    this.router.navigate([{ outlets: { header: [path] } }], {
+      queryParams: { data: dataString },
+    });
   }
 }
-
-

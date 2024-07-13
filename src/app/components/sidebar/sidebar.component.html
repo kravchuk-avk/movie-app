@@ -1,20 +1,27 @@
 <p-sidebar [(visible)]="sidebarVisible">
   <aside class="sidebar">
-        <div class="logo">
-    <img src="path_to_logo" alt="logo">
-    <p>якась крута назва</p>
-  </div>
-<ul class="sidebar__list">
-    <li *ngFor="let item of sidebarLinks" class="sidebar__item">
-      <a [routerLink]="item.routePath"
+    <div class="logo">
+      <img src="path_to_logo" alt="logo" />
+      <p>якась крута назва</p>
+    </div>
+    <ul class="sidebar__list">
+      <li *ngFor="let item of sidebarLinks" class="sidebar__item">
+        <a
+          [routerLink]="item.routePath"
           routerLinkActive="sidebar__link_active"
-          class="sidebar__link">
-        <span>{{ item.routeName }}</span>
-      </a>
-    </li>
-  </ul>
-</aside>
+          class="sidebar__link"
+        >
+          <span>{{ item.routeName }}</span>
+        </a>
+      </li>
+    </ul>
+  </aside>
 </p-sidebar>
 
-<p-button type="button" pButton label="Menu" (click)="this['sidebarVisible'] = true" icon="pi pi-bars" />
-
+<p-button
+  type="button"
+  pButton
+  label="Menu"
+  (click)="this['sidebarVisible'] = true"
+  icon="pi pi-bars"
+/>

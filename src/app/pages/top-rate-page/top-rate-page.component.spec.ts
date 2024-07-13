@@ -8,10 +8,9 @@ describe('TopRatePageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TopRatePageComponent]
-    })
-    .compileComponents();
-    
+      imports: [TopRatePageComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(TopRatePageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

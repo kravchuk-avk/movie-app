@@ -7,8 +7,6 @@ import { MovieListComponent } from '../../components/movie-list/movie-list.compo
   standalone: true,
   imports: [MovieListComponent, HeaderComponent],
   templateUrl: './home-page.component.html',
-  styleUrl: './home-page.component.scss'
+  styleUrl: './home-page.component.scss',
 })
-export class HomePageComponent {
-
-}
+export class HomePageComponent {}

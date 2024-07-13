@@ -9,7 +9,7 @@
     margin-bottom: 45px;
     gap: 20px;
 
-    @include mq("desktop", max) {
+    @include mq('desktop', max) {
       justify-content: space-between;
       flex-wrap: nowrap;
       overflow-x: scroll;
@@ -36,26 +36,28 @@
     border-radius: 5px;
     background-color: $bg-default;
     border: 1px solid $bg-default;
-    transition: box-shadow 0.5s, background-color 0.5s ease-in-out;
+    transition:
+      box-shadow 0.5s,
+      background-color 0.5s ease-in-out;
 
-    @include mq("tablet", max) {
+    @include mq('tablet', max) {
       font-size: 14px;
       padding: 10px 15px;
     }
 
-  &:hover {
-    color: $accent;
-    background-color: $accent-05alpha;
-  }
+    &:hover {
+      color: $accent;
+      background-color: $accent-05alpha;
+    }
 
-  &:focus {
-    background-color: $accent-05alpha;
-    box-shadow: 0 0 0 2px $accent;
-  }
+    &:focus {
+      background-color: $accent-05alpha;
+      box-shadow: 0 0 0 2px $accent;
+    }
 
-  &:active {
-    background-color: $accent-05alpha;
-  }
+    &:active {
+      background-color: $accent-05alpha;
+    }
 
     &.mixitup-control-active {
       background-color: $accent;
@@ -68,7 +70,7 @@
     fill: currentColor;
     transition: fill 0.5s ease-in-out;
 
-    @include mq("tablet", max) {
+    @include mq('tablet', max) {
       width: 20px;
       height: 20px;
       margin-right: 5px;
@@ -85,13 +87,13 @@
     transform: scale(0.7);
     transition: transform 1.5s ease-out 0s;
 
-    @include mq("tablet-2", max) {
-    grid-template-columns: 360px 360px;
-    gap: 15px;
-    margin-bottom: 30px;
+    @include mq('tablet-2', max) {
+      grid-template-columns: 360px 360px;
+      gap: 15px;
+      margin-bottom: 30px;
     }
 
-    @include mq("tablet", max) {
+    @include mq('tablet', max) {
       grid-template-columns: 1fr 1fr;
     }
 

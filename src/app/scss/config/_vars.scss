@@ -15,15 +15,24 @@ $accent-01alpha: rgb(154, 138, 120, 0.1);
 $ints: rgba(169, 169, 169, 1);
 $ints-05alpha: rgba(169, 169, 169, 0.5);
 
+$gradient: linear-gradient(
+  to bottom right,
+  rgba(211, 164, 108, 1) 0%,
+  rgba(178, 130, 84, 1) 41%,
+  rgba(133, 82, 47, 1) 100%
+);
 
+$gradient-headerP: linear-gradient(
+  to bottom,
+  rgba(255, 255, 255, 1) 0%,
+  rgba(255, 255, 255, 1) 25%,
+  rgba(0, 0, 0, 0.7) 41%,
+  rgba(0, 0, 0, 0.5) 20%,
+  rgba(0, 0, 0, 0.7) 100%
+);
 
-$gradient: linear-gradient(to bottom right, rgba(211, 164, 108, 1) 0%, rgba(178, 130, 84, 1) 41%, rgba(133, 82, 47, 1) 100%);
-
-$gradient-headerP: linear-gradient(to bottom,rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 25%, rgba(0, 0, 0, 0.7) 41%, rgba(0, 0, 0, 0.5) 20%, rgba(0, 0, 0, 0.7) 100%);
-
-$gradient-black: rgba(0, 0, 0, 0) linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 100%) 0% 0% no-repeat;
-
-
+$gradient-black: rgba(0, 0, 0, 0)
+  linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 100%) 0% 0% no-repeat;
 
 $bg-default: rgba(249, 250, 255, 1);
 // #f9faff
@@ -43,10 +52,12 @@ $grey: rgba(194, 194, 194, 1);
 $grey-05alpha: rgba(194, 194, 194, 0.5);
 
 // Задаем точки разрыва
-$breakpoints: ("phone": 576px,
-  "tablet": 768px,
-  "tablet-2": 992px,
-  "desktop": 1200px);
+$breakpoints: (
+  'phone': 576px,
+  'tablet': 768px,
+  'tablet-2': 992px,
+  'desktop': 1200px,
+);
 
 // Миксин для создания медиа-запросов
 @mixin mq($width, $type: min) {
@@ -63,15 +74,13 @@ $breakpoints: ("phone": 576px,
   }
 }
 
-// Обрезание текста 
+// Обрезание текста
 @mixin line-clamp($lines: 0) {
   @if $lines <=0 {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-
-  @else {
+  } @else {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -79,11 +88,8 @@ $breakpoints: ("phone": 576px,
     -webkit-box-orient: vertical;
   }
 }
-// Использование миксина 
+// Использование миксина
 .class {
   font-size: 14px;
   @include line-clamp(3);
 }
-
-
-

@@ -40,13 +40,13 @@
   }
 
   & .summary {
-  position: relative;
-  font-weight: 500;
-  color: $title;
-  font-size: 14px;
-  line-height: 1;
-  text-transform: uppercase;
-  padding: 10px 0;
+    position: relative;
+    font-weight: 500;
+    color: $title;
+    font-size: 14px;
+    line-height: 1;
+    text-transform: uppercase;
+    padding: 10px 0;
   }
 
   &::marker {
@@ -54,7 +54,6 @@
   }
 
   & p {
-
     &:not(:last-child) {
       margin-bottom: 8px;
     }
@@ -76,7 +75,6 @@
 }
 
 .popup-open {
-
   & h3 {
     font-size: 20px;
     font-style: normal;
@@ -84,7 +82,7 @@
     font-weight: 700;
     padding: 10px 0;
 
-    @include mq("tablet", max) {
+    @include mq('tablet', max) {
       font-size: 16px;
     }
   }
