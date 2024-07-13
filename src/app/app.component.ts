@@ -32,4 +32,6 @@ import { MovieFavoritesPageComponent } from './pages/movie-favorites-page/movie-
     HeaderComponent,
   ],
 })
-export class AppComponent {}
+export class AppComponent {
+  title = 'first';
+}

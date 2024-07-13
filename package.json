@@ -8,7 +8,7 @@
     "build:production": "ng build --configuration=production --base-href=/first",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng build --configuration production --output-path dist/first/browser --base-href /kravchuk-avk/movie-app/ && cp dist/first/browser/index.html dist/first/browser/404.html && ngh --dir=dist/first/browser"
+    "deploy": "ng build --configuration production --output-path docs --base-href /kravchuk-avk/movie-app/ && cp docs/index.html docs/404.html && ngh --dir=docs"
   },
   "private": true,
   "dependencies": {
