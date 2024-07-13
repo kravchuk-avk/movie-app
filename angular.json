@@ -41,8 +41,8 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all",
-              "baseHref": "/kravchuk-avk/movie-app/"
+              "outputHashing": "all"
+              // "baseHref": "/kravchuk-avk/movie-app/"
             },
             "development": {
               "optimization": false,

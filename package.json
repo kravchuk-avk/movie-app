@@ -5,10 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:production": "ng build --configuration=production --base-href=/first",
+    "build:production": "ng build --configuration=production --base-href=/movie-app",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "deploy": "ng build --configuration production --output-path docs --base-href /kravchuk-avk/movie-app/ && cp docs/index.html docs/404.html && ngh --dir=docs"
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
