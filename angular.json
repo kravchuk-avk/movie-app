@@ -42,7 +42,7 @@
                 }
               ],
               "outputHashing": "all",
-              "baseHref": "/docs/browser/"
+              "baseHref": "/docs/"
             },
             "development": {
               "optimization": false,
