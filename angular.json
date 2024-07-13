@@ -42,7 +42,7 @@
                 }
               ],
               "outputHashing": "all",
-              "baseHref": "/movie-app/docs/"
+              "baseHref": "/movie-app/"
             },
             "development": {
               "optimization": false,
