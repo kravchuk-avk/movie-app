@@ -82,6 +82,7 @@ body {
     font-size: 24px;
     margin-bottom: 30px;
   }
+
   &::after {
     content: '';
     background-color: $accent;
@@ -122,12 +123,12 @@ body {
   gap: 30px;
   margin-bottom: 60px;
 
-  @include mq('tablet', max) {
-    gap: 10px 5px;
-    margin-bottom: 30px;
+  @include mq('desktop', max) {
+    grid-template-columns: repeat(auto-fill, 290px);
   }
 
-  @include mq('phone', max) {
-    grid-template-columns: repeat(2, minmax(0, 170px));
+  @include mq('tablet-2', max) {
+    gap: 10px 5px;
+    margin-bottom: 30px;
   }
 }
