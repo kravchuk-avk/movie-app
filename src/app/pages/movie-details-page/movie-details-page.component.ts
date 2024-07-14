@@ -11,6 +11,7 @@ import { DurationPipe } from '../../pipes/duration/duration.pipe';
 import { MovieCardComponent } from '../../components/movie-card/movie-card.component';
 import { HeaderComponent } from '../../components/header/header.component';
 import { MovieListComponent } from '../../components/movie-list/movie-list.component';
+import { Movie } from '../../models/movie.interface';
 
 @Component({
   selector: 'app-movie-details-page',
@@ -33,7 +34,7 @@ export class MovieDetailsPageComponent implements OnInit {
     ...upcomingMovies,
   ];
 
-  movie: any;
+  movie?: Movie;
   public favoriteMovieListIds: string[] = [];
   public watchLaterMovieListIds: string[] = [];
 
