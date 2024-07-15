@@ -1,10 +1,8 @@
 <p-card
-  header="{{ movie.original_title }}"
-  subheader="{{ movie.release_date }}   |   {{
-    movie.duration ?? 0 | duration
-  }}"
+  [header]="movie.original_title"
+  [subheader]="movie.release_date + ' | ' + (movie.duration ?? 0 | duration)"
   class="movie-card"
-  id="{{ movie.id }}"
+  [id]="movie.id"
   [ngStyle]="{
     'background-image':
       'url( https://image.tmdb.org/t/p/w500/' + movie.poster_path + ')',

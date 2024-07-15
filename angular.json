@@ -29,7 +29,7 @@
               {
                 "glob": "**/*.svg",
                 "input": "src/assets/icons/",
-                "output": "movie-app/assets/icons/"
+                "output": "/assets/icons/"
               }
             ],
             "styles": ["src/styles.scss"],

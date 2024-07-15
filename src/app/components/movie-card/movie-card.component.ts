@@ -17,14 +17,14 @@ export class MovieCardComponent {
   @Input() movie!: Movie;
   @Input() isFavorite: boolean = false;
   @Input() isInWatchList: boolean = false;
-  @Output() addFavorites = new EventEmitter<number>();
-  @Output() addWatchList = new EventEmitter<number>();
+  @Output() addFavorites = new EventEmitter<string>();
+  @Output() addWatchList = new EventEmitter<string>();
 
   addToFavorites() {
-    this.addFavorites.emit(this.movie.id);
+    this.addFavorites.emit(this.movie.id.toString());
   }
 
   addToWatchList() {
-    this.addWatchList.emit(this.movie.id);
+    this.addWatchList.emit(this.movie.id.toString());
   }
 }

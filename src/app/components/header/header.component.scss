@@ -1,39 +1,4 @@
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  background-color: #333;
-  color: #fff;
-
-  .header__list {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-
-    .header__item {
-      margin-right: 15px;
-
-      .header__link {
-        color: #fff;
-        text-decoration: none;
-
-        &.header__link_active {
-          font-weight: bold;
-        }
-      }
-    }
-  }
-
-  .movie-card__btn {
-    margin-left: 10px;
-  }
-
-  .movie-card__icon {
-    color: #fff;
-  }
-
   &__nav {
     text-align: center;
   }
@@ -42,128 +7,24 @@
     display: inline-flex;
     justify-content: space-evenly;
     gap: 40px;
+    background-color: #c8c8c8;
     border-radius: 40px;
-    border: 1px solid #ebebeb;
     padding: 5px 20px;
   }
 }
 
-@import '../../../app/scss/config/_vars';
+.movie-card__btn {
+  transition: background-color 0.5s ease-in-out;
 
-.movie-card {
-  display: flex;
-  align-items: flex-end;
-  position: relative;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  border-radius: 20px 20px 0 0;
-  height: 100%;
-  color: #fff;
-
-  &__wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    height: 100%;
-    // background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.7) 70%, rgba(0, 0, 0, 0) 100%);
-    padding-top: 50%;
-  }
-
-  &__title {
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 1.3;
-    margin-bottom: 10px;
-    text-transform: uppercase;
+  &:hover {
     color: #fff;
   }
 
-  &__overview,
-  &__duration {
-    @include line-clamp(3);
-    font-style: italic;
-    text-align: justify;
-    text-indent: 20px;
-    font-size: 12px;
-    color: #fff;
+  &:focus {
+    color: red;
   }
 
-  &__box {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  &:active {
+    color: green;
   }
-
-  &__icon {
-    stroke: currentColor;
-    stroke-width: 0.5px;
-    fill: none;
-  }
-
-  &__btn {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    border-radius: 5px;
-    color: black;
-    // color: #fff;
-    position: relative;
-    transition:
-      background-color 0.5s,
-      box-shadow 0.5s,
-      text-shadow 0.5s ease-in-out;
-
-    &:hover {
-      // background-color: black;
-      color: rgb(22, 165, 0);
-    }
-
-    &:focus {
-      background-color: black;
-      box-shadow: 0 0 0 2px #fff;
-    }
-
-    &:active {
-      background-color: rgb(181, 181, 181);
-    }
-
-    &.favorite {
-      color: rgb(255, 117, 117);
-    }
-
-    &.watchlist {
-      color: rgb(104, 104, 255);
-    }
-  }
-
-  & .favorite {
-    color: rgb(255, 117, 117);
-  }
-
-  & .watchlist {
-    color: rgb(104, 104, 255);
-  }
-
-  &__inner-icon {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    color: black;
-    // color: #fff;
-    position: relative;
-    transition:
-      background-color 0.5s,
-      box-shadow 0.5s,
-      text-shadow 0.5s ease-in-out;
-  }
-}
-
-::ng-deep .movie-card__icon .pi {
-  font-size: 28px;
 }

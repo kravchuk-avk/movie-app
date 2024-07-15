@@ -26,4 +26,8 @@ export class SidebarComponent implements OnInit {
         routeName: route.data!['label'],
       }));
   }
+
+  showSidebar() {
+    this.sidebarVisible = true;
+  }
 }

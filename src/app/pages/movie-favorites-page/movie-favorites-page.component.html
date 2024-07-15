@@ -6,14 +6,15 @@
     <ng-container
       *ngFor="let movieId of favoriteMovieListIds; trackBy: trackByMovieId"
     >
-      <app-movie-card
-        *ngIf="getMovieById(movieId)"
-        [movie]="getMovieById(movieId)!"
-        [isFavorite]="true"
-        [isInWatchList]="isInList(watchLaterMovieListIds, movieId)"
-        (addFavorites)="handleAddToFavorite(movieId)"
-        (addWatchList)="handleAddToWatchList(movieId)"
-      ></app-movie-card>
+      <ng-container *ngIf="getMovieById(movieId) as movie">
+        <app-movie-card
+          [movie]="movie"
+          [isFavorite]="true"
+          [isInWatchList]="isInList(watchLaterMovieListIds, movieId)"
+          (addFavorites)="handleAddToFavorite(movieId)"
+          (addWatchList)="handleAddToWatchList(movieId)"
+        ></app-movie-card>
+      </ng-container>
     </ng-container>
   </div>
 </section>
