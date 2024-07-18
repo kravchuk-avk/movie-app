@@ -15,10 +15,18 @@ import { RouterLink } from '@angular/router';
 })
 export class MovieCardComponent {
   @Input() movie!: Movie;
-  @Input() isFavorite: boolean = false;
-  @Input() isInWatchList: boolean = false;
+  @Input() favoriteMovieIds: string[] = [];
+  @Input() watchLaterMovieIds: string[] = [];
   @Output() addFavorites = new EventEmitter<string>();
   @Output() addWatchList = new EventEmitter<string>();
+
+  get isFavorite(): boolean {
+    return this.favoriteMovieIds.includes(this.movie.id.toString());
+  }
+
+  get isInWatchList(): boolean {
+    return this.watchLaterMovieIds.includes(this.movie.id.toString());
+  }
 
   addToFavorites() {
     this.addFavorites.emit(this.movie.id.toString());

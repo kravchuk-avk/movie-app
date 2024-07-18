@@ -10,7 +10,6 @@ import {
 import { DurationPipe } from '../../pipes/duration/duration.pipe';
 import { MovieCardComponent } from '../../components/movie-card/movie-card.component';
 import { HeaderComponent } from '../../components/header/header.component';
-import { MovieListComponent } from '../../components/movie-list/movie-list.component';
 import { Movie } from '../../models/movie.interface';
 
 @Component({
@@ -18,13 +17,7 @@ import { Movie } from '../../models/movie.interface';
   standalone: true,
   templateUrl: './movie-details-page.component.html',
   styleUrl: './movie-details-page.component.scss',
-  imports: [
-    HeaderComponent,
-    MovieCardComponent,
-    CommonModule,
-    MovieListComponent,
-    DurationPipe,
-  ],
+  imports: [HeaderComponent, MovieCardComponent, CommonModule, DurationPipe],
 })
 export class MovieDetailsPageComponent implements OnInit {
   movies = [

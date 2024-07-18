@@ -10,10 +10,10 @@
       <app-movie-card
         *ngFor="let item of movies; trackBy: trackByMovieId"
         [movie]="item"
-        [isFavorite]="isInList(favoriteMovieListIds, item)"
-        [isInWatchList]="isInList(watchLaterMovieListIds, item)"
-        (addFavorites)="handleAddToFavorite(item)"
-        (addWatchList)="handleAddToWatchList(item)"
+        [favoriteMovieIds]="favoriteMovieListIds"
+        [watchLaterMovieIds]="watchLaterMovieListIds"
+        (addFavorites)="handleAddFavoriteList(item.id.toString())"
+        (addWatchList)="handleAddWatchList(item.id.toString())"
       ></app-movie-card>
     </ng-container>
     <ng-template #noMovies>

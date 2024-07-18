@@ -9,10 +9,10 @@
       <ng-container *ngIf="getMovieById(movieId) as movie">
         <app-movie-card
           [movie]="movie"
-          [isFavorite]="true"
-          [isInWatchList]="isInList(watchLaterMovieListIds, movieId)"
-          (addFavorites)="handleAddToFavorite(movieId)"
-          (addWatchList)="handleAddToWatchList(movieId)"
+          [favoriteMovieIds]="favoriteMovieListIds"
+          [watchLaterMovieIds]="watchLaterMovieListIds"
+          (addFavorites)="handleAddToFavorite(movie.id.toString())"
+          (addWatchList)="handleAddToWatchList(movie.id.toString())"
         ></app-movie-card>
       </ng-container>
     </ng-container>

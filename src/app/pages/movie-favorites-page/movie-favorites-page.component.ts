@@ -44,10 +44,6 @@ export class MovieFavoritesPageComponent implements OnInit {
     });
   }
 
-  isInList(list: string[], itemId: string): boolean {
-    return list.includes(itemId);
-  }
-
   getMovieById(id: string): Movie | undefined {
     const numericId = +id;
     return this.movies.find((movie) => movie.id === numericId);
