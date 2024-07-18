@@ -4,4 +4,31 @@
 @import 'app/scss/config/_global';
 @import 'app/scss/config/_ints';
 
+.p-card {
+  height: 100%;
+  background: transparent;
+  color: #fff;
+}
 
+.p-card-subtitle {
+  color: #fff;
+}
+
+.p-card-body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.1) 25%,
+    rgba(0, 0, 0, 0.1) 75%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  border-radius: 20px 20px 0 0;
+}
+
+.movie-card__icon .pi {
+  font-size: 28px;
+}

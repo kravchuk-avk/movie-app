@@ -1,0 +1,30 @@
+.header {
+  &__nav {
+    text-align: center;
+  }
+
+  &__inner {
+    display: inline-flex;
+    justify-content: space-evenly;
+    gap: 40px;
+    background-color: #c8c8c8;
+    border-radius: 40px;
+    padding: 5px 20px;
+  }
+}
+
+.movie-card__btn {
+  transition: background-color 0.5s ease-in-out;
+
+  &:hover {
+    color: #fff;
+  }
+
+  &:focus {
+    color: red;
+  }
+
+  &:active {
+    color: green;
+  }
+}

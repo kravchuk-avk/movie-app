@@ -1,46 +1,55 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { MovieCardComponent } from '../movie-card/movie-card.component';
-import { DurationPipe } from '../../pipe/duration/duration.pipe'
-import { MOCK_MOVIES } from '../../mock-data/mock-movies';
+// import { CommonModule } from '@angular/common';
+// import { Movie } from '../../models/movie.interface';
+// import { Component } from '@angular/core';
+// import { MovieCardComponent } from '../movie-card/movie-card.component';
+// import { DurationPipe } from '../../pipes/duration/duration.pipe';
+// import {
+//   nowPlayingMovies,
+//   popularMovies,
+//   topRatedMovies,
+//   upcomingMovies,
+// } from '../../mocks/mock-movies+';
 
-@Component({
-  selector: 'app-movie-list',
-  standalone: true,
-  imports: [CommonModule, MovieCardComponent, DurationPipe],
-  templateUrl: './movie-list.component.html',
-  styleUrl: './movie-list.component.scss'
-})
-export class MovieListComponent {
+// @Component({
+//   selector: 'app-movie-list',
+//   standalone: true,
+//   imports: [CommonModule, MovieCardComponent, DurationPipe],
+//   templateUrl: './movie-list.component.html',
+//   styleUrl: './movie-list.component.scss',
+// })
+// export class MovieListComponent {
+//   movies: Movie[] = [
+//     ...nowPlayingMovies,
+//     ...popularMovies,
+//     ...topRatedMovies,
+//     ...upcomingMovies,
+//   ];
 
-  movies = MOCK_MOVIES;
+//   favorites: Movie[] = [];
+//   watchList: Movie[] = [];
 
+//   public isInList(list: Movie[], movie: Movie): boolean {
+//     return list.some((item) => item.id === movie.id);
+//   }
 
-  favorites: any[] = [];
-  watchList: any[] = [];
+//   public toggleMovieInList(list: Movie[], movie: Movie): void {
+//     const index = list.findIndex((item) => item.id === movie.id);
+//     if (index === -1) {
+//       list.push(movie);
+//     } else {
+//       list.splice(index, 1);
+//     }
+//   }
 
-  public isInList(list: any[], movie: any): boolean {
-    return list.some(item => item.id === movie.id);
-  }
+//   handleAddFavorites(movie: Movie) {
+//     this.toggleMovieInList(this.favorites, movie);
+//   }
 
-  public toggleMovieInList(list: any[], movie: any): void {
-    const index = list.findIndex(item => item.id === movie.id);
-    if (index === -1) {
-      list.push(movie);
-    } else {
-      list.splice(index, 1);
-    }
-  }
+//   handleAddWatchList(movie: Movie) {
+//     this.toggleMovieInList(this.watchList, movie);
+//   }
 
-  handleAddFavorites(movie: any) {
-    this.toggleMovieInList(this.favorites, movie);
-  }
-
-  handleAddWatchList(movie: any) {
-    this.toggleMovieInList(this.watchList, movie);
-  }
-
-  trackByMovieId(index: number, movie: any): number {
-    return movie.id;
-  }
-}
+//   trackByMovieId(index: number, movie: Movie): number {
+//     return movie.id;
+//   }
+// }

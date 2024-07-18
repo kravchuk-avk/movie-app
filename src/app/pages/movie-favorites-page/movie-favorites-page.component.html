@@ -1,0 +1,20 @@
+<section class="movie-list container section">
+  <ng-container *ngIf="favoriteMovieListIds.length > 0">
+    <h2 class="title">Favorites:</h2>
+  </ng-container>
+  <div class="movie-cards grid">
+    <ng-container
+      *ngFor="let movieId of favoriteMovieListIds; trackBy: trackByMovieId"
+    >
+      <ng-container *ngIf="getMovieById(movieId) as movie">
+        <app-movie-card
+          [movie]="movie"
+          [favoriteMovieIds]="favoriteMovieListIds"
+          [watchLaterMovieIds]="watchLaterMovieListIds"
+          (addFavorites)="handleAddToFavorite(movie.id.toString())"
+          (addWatchList)="handleAddToWatchList(movie.id.toString())"
+        ></app-movie-card>
+      </ng-container>
+    </ng-container>
+  </div>
+</section>

@@ -1,42 +1,47 @@
-<div class="movie-list container">
+<!-- <div class="movie-list container">
   <h1 class="title">Фільми</h1>
 
   <section class="section">
-  <div class="movie-cards grid">
-    <app-movie-card *ngFor="let movie of movies; trackBy: trackByMovieId" 
-      [movie]="movie"
-      [isFavorite]="isInList(favorites, movie)"
-      [isInWatchList]="isInList(watchList, movie)"
-      (addFavorites)="handleAddFavorites(movie)" 
-      (addWatchList)="handleAddWatchList(movie)">
-    </app-movie-card>
-  </div>
+    <div class="movie-cards grid">
+      <app-movie-card
+        *ngFor="let movie of movies; trackBy: trackByMovieId"
+        [movie]="movie"
+        [isFavorite]="isInList(favorites, movie)"
+        [isInWatchList]="isInList(watchList, movie)"
+        (addFavorites)="handleAddFavorites(movie)"
+        (addWatchList)="handleAddWatchList(movie)"
+      >
+      </app-movie-card>
+    </div>
   </section>
 
   <section class="section">
-  <h2 class="title">Улюблені</h2>
-  <div class="favorites grid">
-    <app-movie-card *ngFor="let movie of favorites; trackBy: trackByMovieId" 
-      [movie]="movie"
-      [isFavorite]="true"
-      [isInWatchList]="isInList(watchList, movie)"
-      (addFavorites)="handleAddFavorites(movie)" 
-      (addWatchList)="handleAddWatchList(movie)">
-    </app-movie-card>
-  </div>
-</section>
-
-  <section class="section">
-  <h2 class="title">Подивитись</h2>
-  <div class="watch-list grid">
-    <app-movie-card *ngFor="let movie of watchList; trackBy: trackByMovieId" 
-      [movie]="movie"
-      [isFavorite]="isInList(favorites, movie)"
-      [isInWatchList]="true"
-      (addFavorites)="handleAddFavorites(movie)" 
-      (addWatchList)="handleAddWatchList(movie)">
-    </app-movie-card>
-  </div>
+    <h2 class="title">Улюблені</h2>
+    <div class="favorites grid">
+      <app-movie-card
+        *ngFor="let movie of favorites; trackBy: trackByMovieId"
+        [movie]="movie"
+        [isFavorite]="true"
+        [isInWatchList]="isInList(watchList, movie)"
+        (addFavorites)="handleAddFavorites(movie)"
+        (addWatchList)="handleAddWatchList(movie)"
+      >
+      </app-movie-card>
+    </div>
   </section>
 
-</div>
+  <section class="section">
+    <h2 class="title">Подивитись</h2>
+    <div class="watch-list grid">
+      <app-movie-card
+        *ngFor="let movie of watchList; trackBy: trackByMovieId"
+        [movie]="movie"
+        [isFavorite]="isInList(favorites, movie)"
+        [isInWatchList]="true"
+        (addFavorites)="handleAddFavorites(movie)"
+        (addWatchList)="handleAddWatchList(movie)"
+      >
+      </app-movie-card>
+    </div>
+  </section>
+</div> -->

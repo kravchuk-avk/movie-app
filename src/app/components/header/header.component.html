@@ -1,0 +1,21 @@
+<nav class="header__nav container section">
+  <div class="header__inner">
+    <p-button
+      class="movie-card__btn"
+      type="button"
+      (click)="navigateWithData(favoriteMovieIds, 'favorite')"
+      icon="pi pi-heart"
+      styleClass="movie-card__icon"
+      label="Favorites"
+    />
+
+    <p-button
+      class="movie-card__btn"
+      type="button"
+      (click)="navigateWithData(watchLaterMovieIds)"
+      icon="pi pi-clock"
+      styleClass="movie-card__icon"
+      label="WatchList"
+    />
+  </div>
+</nav>
