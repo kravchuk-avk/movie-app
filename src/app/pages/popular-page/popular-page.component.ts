@@ -1,48 +1,47 @@
-import { Component } from '@angular/core';
-import { Movie } from '../../models/movie.interface';
-import { HeaderComponent } from '../../components/header/header.component';
-import { MovieCardComponent } from '../../components/movie-card/movie-card.component';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
-import { popularMovies } from '../../mocks/mock-movies+';
+import { MovieCardComponent } from '../../components/movie-card/movie-card.component';
+import { HeaderComponent } from '../../components/header/header.component';
+import { Movie } from '../../models/movie.interface';
+import { MovieService } from '../../services/movie/movie.service';
 
 @Component({
   selector: 'app-popular-page',
   standalone: true,
-  templateUrl: './popular-page.component.html',
-  styleUrl: './popular-page.component.scss',
   imports: [HeaderComponent, MovieCardComponent, CommonModule],
+  templateUrl: './popular-page.component.html',
+  styleUrls: ['./popular-page.component.scss'],
 })
-export class PopularPageComponent {
-  movies: Movie[] = popularMovies;
+export class PopularPageComponent implements OnInit {
+  movies: Movie[] = [];
   public favoriteMovieListIds: string[] = [];
   public watchLaterMovieListIds: string[] = [];
 
-  constructor(private router: Router) {}
+  constructor(private movieService: MovieService) {}
 
-  redirectToDetailsPage(id: string) {
-    this.router.navigate([`movie/:${id}`]);
+  ngOnInit() {
+    this.movies = this.movieService.getPopularMovies();
+    this.favoriteMovieListIds = this.movieService.getFavoriteMovieIds();
+    this.watchLaterMovieListIds = this.movieService.getWatchLaterMovieIds();
   }
 
-  handleAddFavoriteList(movieId: string) {
-    const index = this.favoriteMovieListIds.indexOf(movieId);
-    if (index === -1) {
-      this.favoriteMovieListIds.push(movieId);
-    } else {
-      this.favoriteMovieListIds.splice(index, 1);
+  handleAddToFavorite(movieId: string) {
+    const movie = this.movieService.getMovieById(+movieId);
+    if (movie) {
+      this.movieService.addToFavorites(movie);
+      this.favoriteMovieListIds = this.movieService.getFavoriteMovieIds();
     }
   }
 
-  handleAddWatchList(movieId: string) {
-    const index = this.watchLaterMovieListIds.indexOf(movieId);
-    if (index === -1) {
-      this.watchLaterMovieListIds.push(movieId);
-    } else {
-      this.watchLaterMovieListIds.splice(index, 1);
+  handleAddToWatchList(movieId: string) {
+    const movie = this.movieService.getMovieById(+movieId);
+    if (movie) {
+      this.movieService.addToWatchLater(movie);
+      this.watchLaterMovieListIds = this.movieService.getWatchLaterMovieIds();
     }
   }
 
-  trackByMovieId(index: number, movie: Movie): number {
-    return movie.id;
+  trackByMovieId(index: number, item: Movie): number {
+    return item.id;
   }
 }

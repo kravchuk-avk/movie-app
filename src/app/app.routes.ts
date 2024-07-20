@@ -1,56 +1,30 @@
 import { Routes } from '@angular/router';
-import { MovieDetailsPageComponent } from './pages/movie-details-page/movie-details-page.component';
+import { RoutePaths } from './constants/route-paths.enum';
+import { MovieGuard } from './guards/movie.guard';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { NowPlayingPageComponent } from './pages/now-playing-page/now-playing-page.component';
 import { PopularPageComponent } from './pages/popular-page/popular-page.component';
 import { TopRatePageComponent } from './pages/top-rate-page/top-rate-page.component';
 import { UpcomingPageComponent } from './pages/upcoming-page/upcoming-page.component';
-import { MovieWatchListPageComponent } from './pages/movie-watch-list-page/movie-watch-list-page.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
-import { MovieGuard } from './guards/movie.guard';
+import { MovieDetailsPageComponent } from './pages/movie-details-page/movie-details-page.component';
 import { MovieFavoritesPageComponent } from './pages/movie-favorites-page/movie-favorites-page.component';
-
+import { MovieWatchListPageComponent } from './pages/movie-watch-list-page/movie-watch-list-page.component';
 // import { MovieResolver } from "./resolver/movie-resolver";
-
 export const routes: Routes = [
-  { path: 'movie/:id', component: MovieDetailsPageComponent },
-
-  { path: 'home', canActivate: [MovieGuard], component: HomePageComponent },
   {
-    path: 'now-playing',
-    component: NowPlayingPageComponent,
-    data: { label: 'Now Playing' },
+    path: RoutePaths.DEFAULT,
+    component: HomePageComponent,
+    canActivate: [MovieGuard],
   },
-  {
-    path: 'popular',
-    component: PopularPageComponent,
-    data: { label: 'Popular' },
-  },
-  {
-    path: 'top-rate',
-    component: TopRatePageComponent,
-    data: { label: 'Top Rate' },
-  },
-  {
-    path: 'upcoming',
-    component: UpcomingPageComponent,
-    data: { label: 'Upcoming' },
-  },
-  { path: 'not-found', component: NotFoundPageComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-
-  {
-    path: 'favorite',
-    component: MovieFavoritesPageComponent,
-    data: { label: 'Favorites' },
-    outlet: 'header',
-  },
-  {
-    path: 'watch-list',
-    component: MovieWatchListPageComponent,
-    data: { label: 'WatchList' },
-    outlet: 'header',
-  },
+  { path: RoutePaths.NOW_PLAYING, component: NowPlayingPageComponent },
+  { path: RoutePaths.POPULAR, component: PopularPageComponent },
+  { path: RoutePaths.TOP_RATE, component: TopRatePageComponent },
+  { path: RoutePaths.UPCOMING, component: UpcomingPageComponent },
+  { path: RoutePaths.MOVIE_ID, component: MovieDetailsPageComponent },
+  { path: RoutePaths.FAVORITES, component: MovieFavoritesPageComponent },
+  { path: RoutePaths.WATCH_LATER, component: MovieWatchListPageComponent },
+  { path: RoutePaths.NOT_FOUND, component: NotFoundPageComponent },
+  // outlet: 'header',
 ];
-
-// resolve: {data: MovieResolver},
+// resolve: {data: MovieResolver}
