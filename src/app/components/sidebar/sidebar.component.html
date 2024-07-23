@@ -1,17 +1,21 @@
 <p-sidebar [(visible)]="sidebarVisible">
   <aside class="sidebar">
     <div class="logo">
-      <img src="path_to_logo" alt="logo" />
+      <img src="#" alt="logo" />
       <p>якась крута назва</p>
     </div>
+
     <ul class="sidebar__list">
-      <li *ngFor="let item of sidebarLinks" class="sidebar__item">
+      <li
+        *ngFor="let link of sidebarLinks; trackBy: trackByRoutePath"
+        class="sidebar__item"
+      >
         <a
-          [routerLink]="item.routePath"
+          [routerLink]="link.routePath"
           routerLinkActive="sidebar__link_active"
           class="sidebar__link"
         >
-          <span>{{ item.routeName }}</span>
+          <span>{{ link.routeName }}</span>
         </a>
       </li>
     </ul>

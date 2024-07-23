@@ -1,16 +1,11 @@
-import { CommonModule } from '@angular/common';
-import { Movie } from '../../models/movie.interface';
 import { Component, OnInit } from '@angular/core';
-import { DurationPipe } from '../../pipes/duration/duration.pipe';
-import {
-  nowPlayingMovies,
-  popularMovies,
-  topRatedMovies,
-  upcomingMovies,
-} from '../../mocks/mock-movies+';
-import { MovieCardComponent } from '../../components/movie-card/movie-card.component';
-import { HeaderComponent } from '../../components/header/header.component';
+import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { MovieCardComponent } from '../../components/movie-card/movie-card.component';
+import { DurationPipe } from '../../pipes/duration/duration.pipe';
+import { HeaderComponent } from '../../components/header/header.component';
+import { Movie } from '../../models/movie.interface';
+import { MovieService } from '../../services/movie/movie.service';
 
 @Component({
   selector: 'app-movie-favorites-page',
@@ -20,28 +15,19 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./movie-favorites-page.component.scss'],
 })
 export class MovieFavoritesPageComponent implements OnInit {
-  movies: Movie[] = [
-    ...nowPlayingMovies,
-    ...popularMovies,
-    ...topRatedMovies,
-    ...upcomingMovies,
-  ];
+  movies: Movie[] = [];
   public favoriteMovieListIds: string[] = [];
   public watchLaterMovieListIds: string[] = [];
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private movieService: MovieService,
+  ) {}
 
   ngOnInit() {
-    this.route.queryParams.subscribe((params: { [key: string]: string }) => {
-      const favoriteDataString = params['data'];
-      this.favoriteMovieListIds = favoriteDataString
-        ? JSON.parse(favoriteDataString)
-        : [];
-      const watchLaterDataString = params['watchLaterData'];
-      this.watchLaterMovieListIds = watchLaterDataString
-        ? JSON.parse(watchLaterDataString)
-        : [];
-    });
+    this.movies = this.movieService.getMovies();
+    this.favoriteMovieListIds = this.movieService.getFavoriteMovieIds();
+    this.watchLaterMovieListIds = this.movieService.getWatchLaterMovieIds();
   }
 
   getMovieById(id: string): Movie | undefined {
@@ -50,20 +36,18 @@ export class MovieFavoritesPageComponent implements OnInit {
   }
 
   handleAddToFavorite(movieId: string) {
-    const index = this.favoriteMovieListIds.indexOf(movieId);
-    if (index === -1) {
-      this.favoriteMovieListIds.push(movieId);
-    } else {
-      this.favoriteMovieListIds.splice(index, 1);
+    const movie = this.getMovieById(movieId);
+    if (movie) {
+      this.movieService.addToFavorites(movie);
+      this.favoriteMovieListIds = this.movieService.getFavoriteMovieIds();
     }
   }
 
   handleAddToWatchList(movieId: string) {
-    const index = this.watchLaterMovieListIds.indexOf(movieId);
-    if (index === -1) {
-      this.watchLaterMovieListIds.push(movieId);
-    } else {
-      this.watchLaterMovieListIds.splice(index, 1);
+    const movie = this.getMovieById(movieId);
+    if (movie) {
+      this.movieService.addToWatchLater(movie);
+      this.watchLaterMovieListIds = this.movieService.getWatchLaterMovieIds();
     }
   }
 

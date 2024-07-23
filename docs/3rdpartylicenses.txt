@@ -243,12 +243,12 @@ License: "MIT"
 
 
 --------------------------------------------------------------------------------
-Package: @angular/animations
+Package: primeng
 License: "MIT"
 
 
 --------------------------------------------------------------------------------
-Package: primeng
+Package: @angular/animations
 License: "MIT"
 
 
