@@ -15,3 +15,7 @@ export interface Movie {
   vote_count: number;
   duration?: number;
 }
+
+export interface MovieListResponse {
+  results: Movie[];
+}
