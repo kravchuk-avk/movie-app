@@ -15,9 +15,7 @@ import { MovieService } from '../../services/movie/movie.service';
   styleUrls: ['./movie-favorites-page.component.scss'],
 })
 export class MovieFavoritesPageComponent implements OnInit {
-  movies: Movie[] = [];
-  public favoriteMovieListIds: string[] = [];
-  public watchLaterMovieListIds: string[] = [];
+  favoriteMovies: Movie[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -25,33 +23,10 @@ export class MovieFavoritesPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.movies = this.movieService.getMovies();
-    this.favoriteMovieListIds = this.movieService.getFavoriteMovieIds();
-    this.watchLaterMovieListIds = this.movieService.getWatchLaterMovieIds();
+    this.favoriteMovies = this.movieService.getFavoriteMovies();
   }
 
-  getMovieById(id: string): Movie | undefined {
-    const numericId = +id;
-    return this.movies.find((movie) => movie.id === numericId);
-  }
-
-  handleAddToFavorite(movieId: string) {
-    const movie = this.getMovieById(movieId);
-    if (movie) {
-      this.movieService.addToFavorites(movie);
-      this.favoriteMovieListIds = this.movieService.getFavoriteMovieIds();
-    }
-  }
-
-  handleAddToWatchList(movieId: string) {
-    const movie = this.getMovieById(movieId);
-    if (movie) {
-      this.movieService.addToWatchLater(movie);
-      this.watchLaterMovieListIds = this.movieService.getWatchLaterMovieIds();
-    }
-  }
-
-  trackByMovieId(index: number, movieId: string): string {
-    return movieId;
+  trackByMovieId(index: number, movie: Movie): number {
+    return movie.id;
   }
 }

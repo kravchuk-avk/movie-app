@@ -17,7 +17,10 @@ export class MovieService {
   private upcomingMovies: Movie[] = upcomingMovies;
   private favoriteMovies: Movie[] = [];
   private watchLaterMovies: Movie[] = [];
+  // private apiKey = '5470d20f8fde7b59d44e4efafdff8a6d';
+  // private apiUrl = 'https://api.themoviedb.org/3';
 
+  // constructor(private httpClient: HttpClient) {}
   constructor() {}
 
   getMovies(): Movie[] {
@@ -61,27 +64,33 @@ export class MovieService {
     if (!this.favoriteMovies.some((m) => m.id === movie.id)) {
       this.favoriteMovies.push(movie);
     } else {
-      this.favoriteMovies = this.favoriteMovies.filter(
-        (m) => m.id !== movie.id,
-      );
+      this.removeFromFavorites(movie);
     }
+  }
+
+  removeFromFavorites(movie: Movie) {
+    this.favoriteMovies = this.favoriteMovies.filter((m) => m.id !== movie.id);
   }
 
   addToWatchLater(movie: Movie) {
     if (!this.watchLaterMovies.some((m) => m.id === movie.id)) {
       this.watchLaterMovies.push(movie);
     } else {
-      this.watchLaterMovies = this.watchLaterMovies.filter(
-        (m) => m.id !== movie.id,
-      );
+      this.removeFromWatchLater(movie);
     }
   }
 
-  getFavoriteMovieIds(): string[] {
-    return this.favoriteMovies.map((movie) => movie.id.toString());
+  removeFromWatchLater(movie: Movie) {
+    this.watchLaterMovies = this.watchLaterMovies.filter(
+      (m) => m.id !== movie.id,
+    );
   }
 
-  getWatchLaterMovieIds(): string[] {
-    return this.watchLaterMovies.map((movie) => movie.id.toString());
+  isFavorite(id: number): boolean {
+    return this.favoriteMovies.some((movie) => movie.id === id);
+  }
+
+  isInWatchList(id: number): boolean {
+    return this.watchLaterMovies.some((movie) => movie.id === id);
   }
 }
