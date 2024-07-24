@@ -32,22 +32,10 @@ import { MovieService } from './services/movie/movie.service';
   ],
 })
 export class AppComponent implements OnInit {
-  favoriteMovieIds: string[] = [];
-  watchLaterMovieIds: string[] = [];
-
   constructor(private movieService: MovieService) {}
 
   ngOnInit() {
-    this.updateFavoriteList();
-    this.updateWatchList();
-  }
-
-  updateFavoriteList() {
-    this.favoriteMovieIds = this.movieService.getFavoriteMovieIds();
-  }
-
-  updateWatchList() {
-    this.watchLaterMovieIds = this.movieService.getWatchLaterMovieIds();
+    this.movieService.getMovies();
   }
   title = 'first';
 }

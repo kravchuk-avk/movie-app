@@ -14,31 +14,11 @@ import { MovieService } from '../../services/movie/movie.service';
 })
 export class NowPlayingPageComponent implements OnInit {
   movies: Movie[] = [];
-  public favoriteMovieListIds: string[] = [];
-  public watchLaterMovieListIds: string[] = [];
 
   constructor(private movieService: MovieService) {}
 
   ngOnInit() {
     this.movies = this.movieService.getNowPlayingMovies();
-    this.favoriteMovieListIds = this.movieService.getFavoriteMovieIds();
-    this.watchLaterMovieListIds = this.movieService.getWatchLaterMovieIds();
-  }
-
-  handleAddToFavorite(movieId: string) {
-    const movie = this.movieService.getMovieById(+movieId);
-    if (movie) {
-      this.movieService.addToFavorites(movie);
-      this.favoriteMovieListIds = this.movieService.getFavoriteMovieIds();
-    }
-  }
-
-  handleAddToWatchList(movieId: string) {
-    const movie = this.movieService.getMovieById(+movieId);
-    if (movie) {
-      this.movieService.addToWatchLater(movie);
-      this.watchLaterMovieListIds = this.movieService.getWatchLaterMovieIds();
-    }
   }
 
   trackByMovieId(index: number, item: Movie): number {

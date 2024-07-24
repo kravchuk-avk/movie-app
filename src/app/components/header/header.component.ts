@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CustomRoute } from '../../models/custom-route.interface';
-import { RouteService } from '../../services/route/route.service';
+import { headerLinks } from '../../constants/header-links';
 
 @Component({
   selector: 'app-header',
@@ -11,16 +11,17 @@ import { RouteService } from '../../services/route/route.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
+  headerLinks = headerLinks;
   // protected readonly headerLinks = headerLinks;
-  headerLinks: CustomRoute[] = [];
+  // headerLinks: CustomRoute[] = [];
 
-  constructor(private routeService: RouteService) {}
+  // constructor(private routeService: RouteService) {}
 
-  ngOnInit() {
-    this.headerLinks = this.routeService.getHeaderLinks();
-    console.log(this.headerLinks);
-  }
+  // ngOnInit() {
+  //   this.headerLinks = this.routeService.getHeaderLinks();
+  //   console.log(this.headerLinks);
+  // }
 
   trackByRoutePath(index: number, link: CustomRoute): string {
     return link.routePath;
