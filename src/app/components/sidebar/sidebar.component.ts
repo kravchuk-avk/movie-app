@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
-import { Router, RouterModule } from '@angular/router';
+import { CustomRoute } from '../../models/custom-route.interface';
+import { sidebarLinks } from '../../constants/sidebar-links';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,23 +13,23 @@ import { Router, RouterModule } from '@angular/router';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent {
   sidebarVisible: boolean = true;
+  sidebarLinks = sidebarLinks;
+  // sidebarLinks: CustomRoute[] = [];
 
-  sidebarLinks: { routePath: string; routeName: string }[] = [];
+  // constructor(private routeService: RouteService) {}
 
-  constructor(private router: Router) {}
-
-  ngOnInit() {
-    this.sidebarLinks = this.router.config
-      .filter((route) => route.data && route.data['label'])
-      .map((route) => ({
-        routePath: route.path || '',
-        routeName: route.data!['label'],
-      }));
-  }
+  // ngOnInit() {
+  //   this.sidebarLinks = this.routeService.getSidebarLinks();
+  //   console.log(this.sidebarLinks);
+  // }
 
   showSidebar() {
     this.sidebarVisible = true;
+  }
+
+  trackByRoutePath(index: number, link: CustomRoute): string {
+    return link.routePath;
   }
 }

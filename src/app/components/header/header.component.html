@@ -1,21 +1,23 @@
 <nav class="header__nav container section">
   <div class="header__inner">
-    <p-button
-      class="movie-card__btn"
-      type="button"
-      (click)="navigateWithData(favoriteMovieIds, 'favorite')"
-      icon="pi pi-heart"
-      styleClass="movie-card__icon"
-      label="Favorites"
-    />
-
-    <p-button
-      class="movie-card__btn"
-      type="button"
-      (click)="navigateWithData(watchLaterMovieIds)"
-      icon="pi pi-clock"
-      styleClass="movie-card__icon"
-      label="WatchList"
-    />
+    <ul class="header__list">
+      <li
+        *ngFor="let link of headerLinks; trackBy: trackByRoutePath"
+        class="header__item"
+      >
+        <a
+          [routerLink]="link.routePath"
+          routerLinkActive="header__link_active"
+          class="movie-card__btn"
+        >
+          <svg *ngIf="link.routeIcon" class="icon" width="24" height="24">
+            <use
+              [attr.href]="'assets/icons/sprite.svg#' + link.routeIcon"
+            ></use>
+          </svg>
+          <span>{{ link.routeName }}</span>
+        </a>
+      </li>
+    </ul>
   </div>
 </nav>

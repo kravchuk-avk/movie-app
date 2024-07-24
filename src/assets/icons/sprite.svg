@@ -1,0 +1,12 @@
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<symbol id="icon-clock" viewBox="0 0 32 32">
+<path d="M4 16c0 6.627 5.373 12 12 12s12-5.373 12-12v0c0-6.627-5.373-12-12-12s-12 5.373-12 12v0z"></path>
+<path d="M16 16l4 2.667z"></path>
+<path d="M16 9.333v6.667z"></path>
+</symbol>
+<symbol id="icon-heart" viewBox="0 0 32 32">
+<path d="M26 16.763l-10 9.904-10-9.904c-1.245-1.212-2.017-2.905-2.017-4.778 0-3.682 2.985-6.667 6.667-6.667 2.184 0 4.122 1.050 5.338 2.673l0.012 0.017c1.229-1.623 3.158-2.66 5.328-2.66 3.682 0 6.667 2.985 6.667 6.667 0 1.862-0.763 3.546-1.994 4.755l-0.001 0.001z"></path>
+</symbol>
+</defs>
+</svg>

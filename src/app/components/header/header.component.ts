@@ -1,28 +1,29 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { Router, RouterModule } from '@angular/router';
-import { ButtonModule } from 'primeng/button';
-import { MovieCardComponent } from '../movie-card/movie-card.component';
+import { CustomRoute } from '../../models/custom-route.interface';
+import { headerLinks } from '../../constants/header-links';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterModule, CommonModule, ButtonModule, MovieCardComponent],
+  imports: [CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  @Input() favoriteMovieIds: string[] = [];
-  @Input() watchLaterMovieIds: string[] = [];
+  headerLinks = headerLinks;
+  // protected readonly headerLinks = headerLinks;
+  // headerLinks: CustomRoute[] = [];
 
-  constructor(private router: Router) {}
+  // constructor(private routeService: RouteService) {}
 
-  navigateWithData(data: string[], favorite?: string) {
-    const dataString = JSON.stringify(data);
-    const path = favorite ? 'favorite' : 'watch-list';
+  // ngOnInit() {
+  //   this.headerLinks = this.routeService.getHeaderLinks();
+  //   console.log(this.headerLinks);
+  // }
 
-    this.router.navigate([{ outlets: { header: [path] } }], {
-      queryParams: { data: dataString },
-    });
+  trackByRoutePath(index: number, link: CustomRoute): string {
+    return link.routePath;
   }
 }

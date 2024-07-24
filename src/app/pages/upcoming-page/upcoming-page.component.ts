@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Movie } from '../../models/movie.interface';
 import { HeaderComponent } from '../../components/header/header.component';
 import { MovieCardComponent } from '../../components/movie-card/movie-card.component';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
-import { upcomingMovies } from '../../mocks/mock-movies+';
+import { MovieService } from '../../services/movie/movie.service';
 
 @Component({
   selector: 'app-upcoming-page',
@@ -13,36 +12,16 @@ import { upcomingMovies } from '../../mocks/mock-movies+';
   templateUrl: './upcoming-page.component.html',
   styleUrl: './upcoming-page.component.scss',
 })
-export class UpcomingPageComponent {
-  movies: Movie[] = upcomingMovies;
-  public favoriteMovieListIds: string[] = [];
-  public watchLaterMovieListIds: string[] = [];
+export class UpcomingPageComponent implements OnInit {
+  movies: Movie[] = [];
 
-  constructor(private router: Router) {}
+  constructor(private movieService: MovieService) {}
 
-  redirectToDetailsPage(id: string) {
-    this.router.navigate([`movie/:${id}`]);
+  ngOnInit() {
+    this.movies = this.movieService.getUpcomingMovies();
   }
 
-  handleAddFavoriteList(movieId: string) {
-    const index = this.favoriteMovieListIds.indexOf(movieId);
-    if (index === -1) {
-      this.favoriteMovieListIds.push(movieId);
-    } else {
-      this.favoriteMovieListIds.splice(index, 1);
-    }
-  }
-
-  handleAddWatchList(movieId: string) {
-    const index = this.watchLaterMovieListIds.indexOf(movieId);
-    if (index === -1) {
-      this.watchLaterMovieListIds.push(movieId);
-    } else {
-      this.watchLaterMovieListIds.splice(index, 1);
-    }
-  }
-
-  trackByMovieId(index: number, movie: Movie): number {
-    return movie.id;
+  trackByMovieId(index: number, item: Movie): number {
+    return item.id;
   }
 }
