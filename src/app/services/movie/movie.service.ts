@@ -1,51 +1,63 @@
 import { Injectable } from '@angular/core';
-import { Movie } from '../../models/movie.interface';
-import {
-  nowPlayingMovies,
-  popularMovies,
-  topRatedMovies,
-  upcomingMovies,
-} from '../../mocks/mock-movies+';
+import { Movie, MovieListResponse } from '../../models/movie.interface';
+import { HttpClient } from '@angular/common/http';
+import { catchError, map, Observable, throwError } from 'rxjs';
+import { environment } from '../../../environments/environment';
+import { MovieDetails } from '../../models/movie-details.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MovieService {
-  private nowPlayingMovies: Movie[] = nowPlayingMovies;
-  private popularMovies: Movie[] = popularMovies;
-  private topRatedMovies: Movie[] = topRatedMovies;
-  private upcomingMovies: Movie[] = upcomingMovies;
+  private apiKey = environment.apiKey;
+  private apiUrl = environment.apiBaseUrl;
+
   private favoriteMovies: Movie[] = [];
   private watchLaterMovies: Movie[] = [];
-  // private apiKey = '5470d20f8fde7b59d44e4efafdff8a6d';
-  // private apiUrl = 'https://api.themoviedb.org/3';
 
-  // constructor(private httpClient: HttpClient) {}
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  getMovies(): Movie[] {
-    return [
-      ...this.nowPlayingMovies,
-      ...this.popularMovies,
-      ...this.topRatedMovies,
-      ...this.upcomingMovies,
-    ];
+  private handleError(error: unknown): Observable<never> {
+    console.error('An error occurred:', error);
+    return throwError(
+      () => new Error('Something bad happened; please try again later.'),
+    );
   }
 
-  getPopularMovies(): Movie[] {
-    return this.popularMovies;
+  private getMovies(endpoint: string): Observable<Movie[]> {
+    const url = `${this.apiUrl}${endpoint}?api_key=${this.apiKey}`;
+    return this.http.get<MovieListResponse>(url).pipe(
+      map((response) => {
+        console.log('Response from server:', response);
+        if (!response || !response.results) {
+          throw new Error('Invalid response from server');
+        }
+        return response.results;
+      }),
+      catchError(this.handleError),
+    );
   }
 
-  getNowPlayingMovies(): Movie[] {
-    return this.nowPlayingMovies;
+  getNowPlayingMovies(): Observable<Movie[]> {
+    return this.getMovies('/movie/now_playing');
   }
 
-  getTopRatedMovies(): Movie[] {
-    return this.topRatedMovies;
+  getPopularMovies(): Observable<Movie[]> {
+    return this.getMovies('/movie/popular');
   }
 
-  getUpcomingMovies(): Movie[] {
-    return this.upcomingMovies;
+  getTopRatedMovies(): Observable<Movie[]> {
+    return this.getMovies('/movie/top_rated');
+  }
+
+  getUpcomingMovies(): Observable<Movie[]> {
+    return this.getMovies('/movie/upcoming');
+  }
+
+  getMovieById(id: number): Observable<MovieDetails> {
+    return this.http.get<MovieDetails>(
+      `${this.apiUrl}/movie/${id}?api_key=${this.apiKey}`,
+    );
   }
 
   getFavoriteMovies(): Movie[] {
@@ -54,10 +66,6 @@ export class MovieService {
 
   getWatchLaterMovies(): Movie[] {
     return this.watchLaterMovies;
-  }
-
-  getMovieById(id: number): Movie | undefined {
-    return this.getMovies().find((movie) => movie.id === id);
   }
 
   addToFavorites(movie: Movie) {
