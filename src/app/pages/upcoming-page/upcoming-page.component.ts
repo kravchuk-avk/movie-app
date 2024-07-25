@@ -18,7 +18,9 @@ export class UpcomingPageComponent implements OnInit {
   constructor(private movieService: MovieService) {}
 
   ngOnInit() {
-    this.movies = this.movieService.getUpcomingMovies();
+    this.movieService.getUpcomingMovies().subscribe((movies) => {
+      this.movies = movies;
+    });
   }
 
   trackByMovieId(index: number, item: Movie): number {

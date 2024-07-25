@@ -16,28 +16,8 @@ import { MovieService } from '../../services/movie/movie.service';
 })
 export class MovieCardComponent {
   @Input() movie!: Movie;
-  // @Input() favoriteMovieIds: string[] = [];
-  // @Input() watchLaterMovieIds: string[] = [];
-  // @Output() addFavorites = new EventEmitter<string>();
-  // @Output() addWatchList = new EventEmitter<string>();
 
   constructor(private movieService: MovieService) {}
-
-  // get isFavorite(): boolean {
-  //   return this.favoriteMovieIds.includes(this.movie.id.toString());
-  // }
-
-  // get isInWatchList(): boolean {
-  //   return this.watchLaterMovieIds.includes(this.movie.id.toString());
-  // }
-
-  // addToFavorites() {
-  //   this.addFavorites.emit(this.movie.id.toString());
-  // }
-
-  // addToWatchList() {
-  //   this.addWatchList.emit(this.movie.id.toString());
-  // }
 
   get isFavorite(): boolean {
     return this.movieService.isFavorite(this.movie.id);

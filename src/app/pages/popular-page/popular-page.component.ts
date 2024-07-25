@@ -18,7 +18,14 @@ export class PopularPageComponent implements OnInit {
   constructor(private movieService: MovieService) {}
 
   ngOnInit() {
-    this.movies = this.movieService.getPopularMovies();
+    this.movieService.getPopularMovies().subscribe({
+      next: (movies) => {
+        this.movies = movies;
+      },
+      error: (err) => {
+        console.error('Error fetching popular movies', err);
+      },
+    });
   }
 
   trackByMovieId(index: number, item: Movie): number {

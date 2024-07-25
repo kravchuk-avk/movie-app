@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   RouterLink,
   RouterLinkActive,
@@ -31,11 +31,8 @@ import { MovieService } from './services/movie/movie.service';
     HeaderComponent,
   ],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   constructor(private movieService: MovieService) {}
 
-  ngOnInit() {
-    this.movieService.getMovies();
-  }
   title = 'first';
 }
