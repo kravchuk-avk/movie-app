@@ -16,6 +16,7 @@ import { MovieService } from '../../services/movie/movie.service';
 })
 export class MovieFavoritesPageComponent implements OnInit {
   favoriteMovies: Movie[] = [];
+  watchLaterMovies: Movie[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -23,7 +24,13 @@ export class MovieFavoritesPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.favoriteMovies = this.movieService.getFavoriteMovies();
+    this.movieService.getFavoriteMovies().subscribe((movies) => {
+      this.favoriteMovies = movies;
+    });
+
+    this.movieService.getWatchLaterMovies().subscribe((movies) => {
+      this.watchLaterMovies = movies;
+    });
   }
 
   trackByMovieId(index: number, movie: Movie): number {

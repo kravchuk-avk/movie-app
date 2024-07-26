@@ -28,18 +28,10 @@ export class MovieCardComponent {
   }
 
   addToFavorites() {
-    if (this.isFavorite) {
-      this.movieService.removeFromFavorites(this.movie);
-    } else {
-      this.movieService.addToFavorites(this.movie);
-    }
+    this.movieService.addToFavorites(this.movie);
   }
 
   addToWatchList() {
-    if (this.isInWatchList) {
-      this.movieService.removeFromWatchLater(this.movie);
-    } else {
-      this.movieService.addToWatchLater(this.movie);
-    }
+    this.movieService.addToWatchLater(this.movie);
   }
 }
