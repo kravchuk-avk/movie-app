@@ -17,5 +17,11 @@
   "rules": {
     "prettier/prettier": "error",
     "@typescript-eslint/no-explicit-any": "warn"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "extends": ["plugin:@ngrx/recommended"]
+    }
+  ]
 }

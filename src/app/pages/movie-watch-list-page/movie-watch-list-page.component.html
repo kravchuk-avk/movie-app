@@ -1,16 +1,16 @@
 <section class="movie-list container section">
-  <ng-container *ngIf="watchLaterMovies.length > 0">
-    <h2 class="title">Subsequently:</h2>
+  <ng-container *ngIf="watchLaterMovies$ | async as watchLaterMovies">
+    <h2 class="title" *ngIf="watchLaterMovies.length > 0">WatchList:</h2>
+    <div class="movie-cards grid">
+      <ng-container *ngIf="watchLaterMovies.length > 0; else noMovies">
+        <app-movie-card
+          *ngFor="let movie of watchLaterMovies; trackBy: trackByMovieId"
+          [movie]="movie"
+        ></app-movie-card>
+      </ng-container>
+    </div>
   </ng-container>
-  <div class="movie-cards grid">
-    <ng-container *ngIf="watchLaterMovies.length > 0; else noMovies">
-      <app-movie-card
-        *ngFor="let movie of watchLaterMovies; trackBy: trackByMovieId"
-        [movie]="movie"
-      ></app-movie-card>
-    </ng-container>
-    <ng-template #noMovies>
-      <p>No movies available</p>
-    </ng-template>
-  </div>
+  <ng-template #noMovies>
+    <p>No movies available</p>
+  </ng-template>
 </section>
