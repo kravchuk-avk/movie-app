@@ -3,32 +3,34 @@ import { CommonModule } from '@angular/common';
 import { MovieCardComponent } from '../../components/movie-card/movie-card.component';
 import { HeaderComponent } from '../../components/header/header.component';
 import { Movie } from '../../models/movie.interface';
-import { MovieService } from '../../services/movie/movie.service';
+import { ClearObservable } from '../../shared/directives/clear-observable.directive';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { loadMovies } from '../../store/actions';
+import { selectAllMovies, selectMovieError } from '../../store/selectors';
 
 @Component({
   selector: 'app-popular-page',
   standalone: true,
-  imports: [HeaderComponent, MovieCardComponent, CommonModule],
+  imports: [CommonModule, HeaderComponent, MovieCardComponent, CommonModule],
   templateUrl: './popular-page.component.html',
   styleUrls: ['./popular-page.component.scss'],
 })
-export class PopularPageComponent implements OnInit {
-  movies: Movie[] = [];
+export class PopularPageComponent extends ClearObservable implements OnInit {
+  movies$: Observable<Movie[]>;
+  error$: Observable<string | null>;
 
-  constructor(private movieService: MovieService) {}
-
-  ngOnInit() {
-    this.movieService.getPopularMovies().subscribe({
-      next: (movies) => {
-        this.movies = movies;
-      },
-      error: (err) => {
-        console.error('Error fetching popular movies', err);
-      },
-    });
+  constructor(private store: Store) {
+    super();
+    this.movies$ = this.store.select(selectAllMovies);
+    this.error$ = this.store.select(selectMovieError);
   }
 
-  trackByMovieId(index: number, item: Movie): number {
-    return item.id;
+  ngOnInit(): void {
+    this.store.dispatch(loadMovies());
+  }
+
+  trackByMovieId(index: number, movie: Movie): number {
+    return movie.id;
   }
 }

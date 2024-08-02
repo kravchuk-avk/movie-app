@@ -1,7 +1,7 @@
 <section class="movie-list container section">
   <h2 class="title">UpComing</h2>
   <div class="movie-cards grid">
-    <ng-container *ngIf="movies.length > 0; else noMovies">
+    <ng-container *ngIf="movies$ | async as movies; else noMovies">
       <app-movie-card
         *ngFor="let item of movies; trackBy: trackByMovieId"
         [movie]="item"
