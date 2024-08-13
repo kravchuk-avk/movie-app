@@ -1,0 +1,44 @@
+// Задаем точки разрыва
+$breakpoints: ('phone': 576px,
+  'tablet': 768px,
+  'tablet-2': 992px,
+  'desktop': 1220px,
+);
+
+// Миксин для создания медиа-запросов
+@mixin mq($width, $type: min) {
+  @if map-has-key($breakpoints, $width) {
+    $width: map-get($breakpoints, $width);
+
+    @if $type==max {
+      $width: $width - 1px;
+    }
+
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}
+
+// Обрезание текста
+@mixin line-clamp($lines: 0) {
+  @if $lines <=0 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  @else {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+  }
+}
+
+// Использование миксина
+.class {
+  font-size: 14px;
+  @include line-clamp(3);
+}

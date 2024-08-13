@@ -11,7 +11,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
 import { MovieFavoritesPageComponent } from './pages/movie-favorites-page/movie-favorites-page.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { MovieService } from './services/movie/movie.service';
+import { MoviesService } from './services/movie/movie.service';
 
 @Component({
   selector: 'app-root',
@@ -32,7 +32,7 @@ import { MovieService } from './services/movie/movie.service';
   ],
 })
 export class AppComponent {
-  constructor(private movieService: MovieService) {}
+  constructor(private moviesService: MoviesService) {}
 
   title = 'first';
 }

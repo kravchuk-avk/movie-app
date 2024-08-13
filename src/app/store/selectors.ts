@@ -1,24 +1,43 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { MovieState } from './reducer';
+import { MoviesState } from './state';
+import { Movie } from '../models/movie.interface';
 
-export const selectMovieState = createFeatureSelector<MovieState>('movies');
+export const selectMoviesState = createFeatureSelector<MoviesState>('movies');
 
-export const selectAllMovies = createSelector(
-  selectMovieState,
-  (state: MovieState) => state.movies,
+const selectCreateCategorySelectors = (category: keyof MoviesState) => ({
+  selectMovies: createSelector(
+    selectMoviesState,
+    (state: MoviesState) => state[category] as Movie[],
+  ),
+  selectIsLoading: createSelector(
+    selectMoviesState,
+    (state: MoviesState) =>
+      state.isLoading[category as keyof MoviesState['isLoading']],
+  ),
+  selectError: createSelector(
+    selectMoviesState,
+    (state: MoviesState) => state.error[category as keyof MoviesState['error']],
+  ),
+});
+
+export const nowPlayingSelectors = selectCreateCategorySelectors('nowPlaying');
+export const popularSelectors = selectCreateCategorySelectors('popular');
+export const topRatedSelectors = selectCreateCategorySelectors('topRated');
+export const upcomingSelectors = selectCreateCategorySelectors('upcoming');
+export const favoriteSelectors = selectCreateCategorySelectors('favorite');
+export const watchLaterSelectors = selectCreateCategorySelectors('watchLater');
+
+export const selectFavoriteIds = createSelector(
+  selectMoviesState,
+  (state: MoviesState) => state.favoriteIds,
 );
 
-export const selectFavoriteMovies = createSelector(
-  selectMovieState,
-  (state: MovieState) => state.favoriteMovies,
+export const selectWatchLaterIds = createSelector(
+  selectMoviesState,
+  (state: MoviesState) => state.watchLaterIds,
 );
 
-export const selectWatchLaterMovies = createSelector(
-  selectMovieState,
-  (state: MovieState) => state.watchLaterMovies,
-);
-
-export const selectMovieError = createSelector(
-  selectMovieState,
-  (state: MovieState) => state.error,
+export const selectMovieDetails = createSelector(
+  selectMoviesState,
+  (state: MoviesState) => state.movieDetails,
 );
