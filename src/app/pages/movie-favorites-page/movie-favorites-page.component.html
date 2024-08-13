@@ -1,16 +1,26 @@
 <section class="movie-list container section">
-  <ng-container *ngIf="favoriteMovies$ | async as favoriteMovies">
-    <h2 class="title" *ngIf="favoriteMovies.length > 0">Favorites:</h2>
-    <div class="movie-cards grid">
-      <ng-container *ngIf="favoriteMovies.length > 0; else noMovies">
+  <ng-container *ngIf="isLoading$ | async; else loaded">
+    <p>Loading...</p>
+  </ng-container>
+
+  <ng-template #loaded>
+    <ng-container
+      *ngIf="favoriteMovies$ | async as favoriteMovies; else noMovies"
+    >
+      <h2 class="title" *ngIf="favoriteMovies.length > 0">Favorites:</h2>
+      <div class="movie-cards grid">
         <app-movie-card
           *ngFor="let movie of favoriteMovies; trackBy: trackByMovieId"
           [movie]="movie"
         ></app-movie-card>
-      </ng-container>
-    </div>
-  </ng-container>
-  <ng-template #noMovies>
-    <p>No movies available</p>
+      </div>
+    </ng-container>
+    <ng-template #noMovies>
+      <p>No movies available</p>
+    </ng-template>
   </ng-template>
+
+  <ng-container *ngIf="error$ | async as error">
+    <p class="error">{{ error }}</p>
+  </ng-container>
 </section>

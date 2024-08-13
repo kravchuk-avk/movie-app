@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MovieCardComponent } from '../../components/movie-card/movie-card.component';
-import { DurationPipe } from '../../pipes/duration/duration.pipe';
-import { HeaderComponent } from '../../components/header/header.component';
-import { Movie } from '../../models/movie.interface';
-import { Store } from '@ngrx/store';
-import { ClearObservable } from '../../shared/directives/clear-observable.directive';
+import { Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { selectAllMovies } from '../../store/selectors';
+import { HeaderComponent } from '../../components/header/header.component';
+import { MovieCardComponent } from '../../components/movie-card/movie-card.component';
+import { Movie } from '../../models/movie.interface';
+import { DurationPipe } from '../../pipes/duration/duration.pipe';
+import { favoriteActions } from '../../store/actions';
+import { favoriteSelectors } from '../../store/selectors';
+import { ClearObservable } from '../../shared/directives/clear-observable.directive';
 
 @Component({
   selector: 'app-movie-favorites-page',
@@ -20,20 +21,24 @@ export class MovieFavoritesPageComponent
   extends ClearObservable
   implements OnInit
 {
-  favoriteMovies$: Observable<Movie[]>;
+  favoriteMovies$: Observable<Movie[]> | null = null;
+  isLoading$: Observable<boolean> | null = null;
+  error$: Observable<string | null> | null = null;
 
   constructor(private store: Store) {
     super();
-    this.favoriteMovies$ = this.store.select(selectAllMovies);
   }
 
   ngOnInit() {
-    // this.movieService.getFavoriteMovies().subscribe((movies) => {
-    //   this.favoriteMovies = movies;
-    // });
-    // this.movieService.getWatchLaterMovies().subscribe((movies) => {
-    //   this.watchLaterMovies = movies;
-    // });
+    this.store.dispatch(favoriteActions.load());
+
+    this.favoriteMovies$ = this.store.pipe(
+      select(favoriteSelectors.selectMovies),
+    );
+    this.isLoading$ = this.store.pipe(
+      select(favoriteSelectors.selectIsLoading),
+    );
+    this.error$ = this.store.pipe(select(favoriteSelectors.selectError));
   }
 
   trackByMovieId(index: number, movie: Movie): number {

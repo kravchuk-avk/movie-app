@@ -1,4 +1,5 @@
-@import '../../../app/scss/config/_vars';
+@import '../../../assets/styles/scss/config/_vars';
+@import '../../../assets/styles/scss/config/_mixins.scss';
 
 .movie-card {
   display: flex;

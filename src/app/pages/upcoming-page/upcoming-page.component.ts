@@ -6,8 +6,8 @@ import { Movie } from '../../models/movie.interface';
 import { ClearObservable } from '../../shared/directives/clear-observable.directive';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { loadMovies } from '../../store/actions';
-import { selectAllMovies, selectMovieError } from '../../store/selectors';
+import { upcomingActions } from '../../store/actions';
+import { upcomingSelectors } from '../../store/selectors';
 
 @Component({
   selector: 'app-upcoming-page',
@@ -22,12 +22,12 @@ export class UpcomingPageComponent extends ClearObservable implements OnInit {
 
   constructor(private store: Store) {
     super();
-    this.movies$ = this.store.select(selectAllMovies);
-    this.error$ = this.store.select(selectMovieError);
+    this.movies$ = this.store.select(upcomingSelectors.selectMovies);
+    this.error$ = this.store.select(upcomingSelectors.selectError);
   }
 
   ngOnInit(): void {
-    this.store.dispatch(loadMovies());
+    this.store.dispatch(upcomingActions.load());
   }
 
   trackByMovieId(index: number, movie: Movie): number {

@@ -6,8 +6,8 @@ import { Movie } from '../../models/movie.interface';
 import { ClearObservable } from '../../shared/directives/clear-observable.directive';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { loadMovies } from '../../store/actions';
-import { selectAllMovies, selectMovieError } from '../../store/selectors';
+import { nowPlayingActions } from '../../store/actions';
+import { nowPlayingSelectors } from '../../store/selectors';
 
 @Component({
   selector: 'app-now-playing-page',
@@ -22,12 +22,12 @@ export class NowPlayingPageComponent extends ClearObservable implements OnInit {
 
   constructor(private store: Store) {
     super();
-    this.movies$ = this.store.select(selectAllMovies);
-    this.error$ = this.store.select(selectMovieError);
+    this.movies$ = this.store.select(nowPlayingSelectors.selectMovies);
+    this.error$ = this.store.select(nowPlayingSelectors.selectError);
   }
 
   ngOnInit(): void {
-    this.store.dispatch(loadMovies());
+    this.store.dispatch(nowPlayingActions.load());
   }
 
   trackByMovieId(index: number, movie: Movie): number {

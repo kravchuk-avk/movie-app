@@ -15,8 +15,8 @@
       <p-button
         class="movie-card__btn"
         type="button"
-        [ngClass]="{ favorite: isFavorite }"
-        (click)="addToFavorites()"
+        [ngClass]="{ favorite: isFavorite$ | async }"
+        (click)="toggleFavorite()"
         icon="pi pi-heart"
         styleClass="movie-card__icon"
       >
@@ -41,8 +41,8 @@
       <p-button
         class="movie-card__btn"
         type="button"
-        [ngClass]="{ watchlist: isInWatchList }"
-        (click)="addToWatchList()"
+        [ngClass]="{ watchlist: isInWatchList$ | async }"
+        (click)="toggleWatchList()"
         icon="pi pi-clock"
         styleClass="movie-card__icon"
       >
