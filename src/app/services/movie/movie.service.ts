@@ -35,7 +35,6 @@ export class MoviesService {
     );
   }
 
-  // Методы для получения фильмов по категориям
   getNowPlayingMovies(): Observable<Movie[]> {
     return this.getMovies('/movie/now_playing');
   }
@@ -53,16 +52,13 @@ export class MoviesService {
   }
 
   getFavoriteMovies(): Observable<Movie[]> {
-    // Предположим, что "Избранное" и "Смотреть позже" хранятся на стороне сервера,
-    // но могут также храниться локально, в этом случае можно вернуть mock-данные или использовать localStorage
-    return this.getMovies('/movie/favorites'); // Пример эндпоинта
+    return this.getMovies('/movie/favorites');
   }
 
   getWatchLaterMovies(): Observable<Movie[]> {
-    return this.getMovies('/movie/watch_later'); // Пример эндпоинта
+    return this.getMovies('/movie/watch_later');
   }
 
-  // Метод для получения деталей о фильме
   getMovieDetails(id: number): Observable<MovieDetails> {
     const url = `${this.apiUrl}/movie/${id}?api_key=${this.apiKey}`;
     return this.http.get<MovieDetails>(url).pipe(catchError(this.handleError));

@@ -31,36 +31,44 @@ export class MoviesEffects {
     );
   }
 
-  loadNowPlaying$ = createEffect(() =>
-    this.loadMovies('nowPlaying', () =>
+  loadNowPlaying$ = createEffect(() => {
+    return this.loadMovies('nowPlaying', () =>
       this.moviesService.getNowPlayingMovies(),
-    ),
-  );
+    );
+  });
 
-  loadPopular$ = createEffect(() =>
-    this.loadMovies('popular', () => this.moviesService.getPopularMovies()),
-  );
+  loadPopular$ = createEffect(() => {
+    return this.loadMovies('popular', () =>
+      this.moviesService.getPopularMovies(),
+    );
+  });
 
-  loadTopRated$ = createEffect(() =>
-    this.loadMovies('topRated', () => this.moviesService.getTopRatedMovies()),
-  );
+  loadTopRated$ = createEffect(() => {
+    return this.loadMovies('topRated', () =>
+      this.moviesService.getTopRatedMovies(),
+    );
+  });
 
-  loadUpcoming$ = createEffect(() =>
-    this.loadMovies('upcoming', () => this.moviesService.getUpcomingMovies()),
-  );
+  loadUpcoming$ = createEffect(() => {
+    return this.loadMovies('upcoming', () =>
+      this.moviesService.getUpcomingMovies(),
+    );
+  });
 
-  loadFavoriteMovies$ = createEffect(() =>
-    this.loadMovies('favorite', () => this.moviesService.getFavoriteMovies()),
-  );
+  loadFavoriteMovies$ = createEffect(() => {
+    return this.loadMovies('favorite', () =>
+      this.moviesService.getFavoriteMovies(),
+    );
+  });
 
-  loadWatchLaterMovies$ = createEffect(() =>
-    this.loadMovies('watchLater', () =>
+  loadWatchLaterMovies$ = createEffect(() => {
+    return this.loadMovies('watchLater', () =>
       this.moviesService.getWatchLaterMovies(),
-    ),
-  );
+    );
+  });
 
-  loadMovieDetails$ = createEffect(() =>
-    this.actions$.pipe(
+  loadMovieDetails$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(movieDetailsActions.load),
       switchMap((action) =>
         this.moviesService.getMovieDetails(action.movieId).pipe(
@@ -72,17 +80,18 @@ export class MoviesEffects {
           }),
         ),
       ),
-    ),
-  );
+    );
+  });
 
   navigateToMovieDetails$ = createEffect(
-    () =>
-      this.actions$.pipe(
+    () => {
+      return this.actions$.pipe(
         ofType(movieDetailsActions.loadSuccess),
         tap(({ movie }) => {
           this.router.navigate(['/movies', movie.id]);
         }),
-      ),
+      );
+    },
     { dispatch: false },
   );
 }
