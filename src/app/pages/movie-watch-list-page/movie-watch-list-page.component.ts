@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { HeaderComponent } from '../../components/header/header.component';
 import { MovieCardComponent } from '../../components/movie-card/movie-card.component';
@@ -32,13 +32,11 @@ export class MovieWatchListPageComponent
   ngOnInit() {
     this.store.dispatch(watchLaterActions.load());
 
-    this.watchLaterMovies$ = this.store.pipe(
-      select(watchLaterSelectors.selectMovies),
+    this.watchLaterMovies$ = this.store.select(
+      watchLaterSelectors.selectMovies,
     );
-    this.isLoading$ = this.store.pipe(
-      select(watchLaterSelectors.selectIsLoading),
-    );
-    this.error$ = this.store.pipe(select(watchLaterSelectors.selectError));
+    this.isLoading$ = this.store.select(watchLaterSelectors.selectIsLoading);
+    this.error$ = this.store.select(watchLaterSelectors.selectError);
   }
 
   trackByMovieId(index: number, movie: Movie): number {

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { HeaderComponent } from '../../components/header/header.component';
 import { MovieCardComponent } from '../../components/movie-card/movie-card.component';
@@ -32,13 +32,9 @@ export class MovieFavoritesPageComponent
   ngOnInit() {
     this.store.dispatch(favoriteActions.load());
 
-    this.favoriteMovies$ = this.store.pipe(
-      select(favoriteSelectors.selectMovies),
-    );
-    this.isLoading$ = this.store.pipe(
-      select(favoriteSelectors.selectIsLoading),
-    );
-    this.error$ = this.store.pipe(select(favoriteSelectors.selectError));
+    this.favoriteMovies$ = this.store.select(favoriteSelectors.selectMovies);
+    this.isLoading$ = this.store.select(favoriteSelectors.selectIsLoading);
+    this.error$ = this.store.select(favoriteSelectors.selectError);
   }
 
   trackByMovieId(index: number, movie: Movie): number {
